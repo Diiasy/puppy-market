@@ -39,24 +39,44 @@ mongoose
         console.log(err);
     });
 
-
-// ROUTERS
+// Routers
 const indexRouter = require('./routes/index');
 const signupRouter = require('./routes/users/signup');
+const loginRouter = require('./routes/users/login');
+const logoutRouter = require('./routes/users/logout');
 const puppiesRouter = require('./routes/puppies/list');
 const puppiesCreateRouter = require('./routes/puppies/create');
 const puppiesDetailRouter = require('./routes/puppies/detail');
 
+// Protect Middleware
+function protectMiddleWare(req,res,next){
+    console.log("Protect Middleware called");
+    if(req.session.currentUser){
+        next();
+    } else {
+        res.redirect("/login");
+    }
+}
 
-// Routes middleware
+function addToNav(req,res,next){
+    console.log("Middleware for nav called");
+    if(req.session.user){
+        res.locals.loggedIn = true;
+        res.locals.user = req.session.user;
+    }
+    next();
+}
 
+app.use(addToNav);
+
+// Routes Middleware
 app.use('/', indexRouter);
 app.use('/users', signupRouter);
+app.use('/users', loginRouter);
+app.use('/users', logoutRouter);
 app.use('/puppies', puppiesRouter);
 app.use('/puppies/create', puppiesCreateRouter);
 app.use('/puppies/detail', puppiesDetailRouter);
-
-
 
 app.listen(process.env.port, ()=> {
     console.log("Webserver is listening", process.env.port);
