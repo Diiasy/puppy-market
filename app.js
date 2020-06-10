@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require('express');
 const app = express();
 const path = require('path');
+const bodyParser = require('body-parser');
 
 var cookieParser = require('cookie-parser');
 var session = require('express-session')
