@@ -1,0 +1,32 @@
+{
+  "name": "puppy-market",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Diiasy/puppy-market.git"
+  },
+  "author": "Nienke & Melanie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Diiasy/puppy-market/issues"
+  },
+  "homepage": "https://github.com/Diiasy/puppy-market#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "hbs": "^4.1.1",
+    "http-errors": "^1.7.3",
+    "mongoose": "^5.9.18",
+    "multer": "^1.4.2",
+    "path": "^0.12.7"
+  }
+}
