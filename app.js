@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config();
 
 const express = require('express');
 const app = express();
@@ -6,7 +6,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 var cookieParser = require('cookie-parser');
-var session = require('express-session')
+var session = require('express-session');
 
 const hbs = require('hbs');
 app.set('view engine', 'hbs');
@@ -23,7 +23,7 @@ app.use(session({
     secret: process.env.secret,
     resave: false,
     saveUninitialized: true
-}))
+}));
 
 const mongoose = require('mongoose');
 
@@ -36,10 +36,27 @@ mongoose
         console.log('Connected to the database');
     })
     .catch(err => {
-        console.log(err)
-    })
+        console.log(err);
+    });
+
+
+// ROUTERS
+const indexRouter = require('./routes/index');
+const signupRouter = require('./routes/users/signup');
+
+// Routes middleware
+
+
+
+
+
+app.use('/', indexRouter);
+app.use('/users', signupRouter);
+
+
+
 
 
 app.listen(process.env.port, ()=> {
     console.log("Webserver is listening", process.env.port);
-})
+});
