@@ -8,7 +8,7 @@ const puppySchema = new mongoose.Schema ({
     price: { type: String },
     picture: { type: [String] },
     description: { type: String },
-    // owner: { type: mongoose.Schema.ObjectId, ref:"User" }
+    owner: { type: mongoose.Schema.ObjectId, ref:"User" }
 })
 
 const Puppy = mongoose.model("Puppy", puppySchema);

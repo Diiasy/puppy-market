@@ -15,7 +15,7 @@ app.get('/', (req, res)=>{
 
 app.post('/', upload.single("picture"), (req, res)=>{
     const { name, breed, birthDate, colors, price, description } = req.body;
-    // const owner = req.session.currentUser._id;
+    const owner = req.session.user._id;
 
     let picture = "";
     if (req.file){
@@ -32,7 +32,7 @@ app.post('/', upload.single("picture"), (req, res)=>{
         colors,
         price,
         description,
-        // owner,
+        owner,
         picture
     })
     .then(puppy=>{
