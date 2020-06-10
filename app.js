@@ -40,18 +40,42 @@ mongoose
     });
 
 
-// ROUTERS
+// Routers
 const indexRouter = require('./routes/index');
 const signupRouter = require('./routes/users/signup');
-
-// Routes middleware
-
-
+const loginRouter = require('./routes/users/login');
+const logoutRouter = require('./routes/users/logout');
 
 
 
+// Protect Middleware
+function protectMiddleWare(req,res,next){
+    console.log("Protect Middleware called");
+    if(req.session.currentUser){
+        next();
+    } else {
+        res.redirect("/login");
+    }
+}
+
+function addToNav(req,res,next){
+    console.log("Middleware for nav called");
+    if(req.session.user){
+        res.locals.loggedIn = true;
+        res.locals.user = req.session.user;
+    }
+    next();
+}
+
+app.use(addToNav);
+
+
+
+// Routes Middleware
 app.use('/', indexRouter);
 app.use('/users', signupRouter);
+app.use('/users', loginRouter);
+app.use('/users', logoutRouter);
 
 
 

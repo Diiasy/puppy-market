@@ -6,6 +6,9 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
         {{#if loggedIn}}
+          <li class="nav-item">
+            <a class="nav-link" href="users/logout">Logout</a>
+          </li>
         {{else}}
             <li class="nav-item">
                 <a class="nav-link" href="users/signup">Sign up</a>

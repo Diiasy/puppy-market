@@ -9,7 +9,6 @@ const mongoose = require('mongoose');
 
 
 app.post('/signup', upload.single("picture"),(req, res, next) => {
-  debugger;
   const { username, email, password, city } = req.body;
   const profileImage = req.file.filename;
 
