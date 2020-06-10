@@ -1,0 +1,76 @@
+<div>
+    <h2>Add puppy</h2>
+
+    <form id="form-create" action="/puppies/create" method="POST">
+            <input type="text" placeholder="Name" name="name">
+            <div class="breed-div">
+                <input class="breed" type="text" placeholder="Breed" name="breed">
+                <button class="breed" id="add-breed-btn" class="btn">Add breed</button>
+                <button class="breed" id="delete-breed-btn" class="btn">Delete breed</button>
+            </div>
+            
+            <input type="date" placeholder="Birth Date" name="birthDate">
+
+            <div class="color-div">
+                <input class="color" type="text" placeholder="Color" name="color">
+                <button class="color" id="add-color-btn" class="btn">Add color</button>
+                <button class="color" id="delete-color-btn" class="btn">Delete color</button>
+            </div>
+
+            <input type="number" placeholder="Price" name="price" min="0">
+            <input type="text" placeholder="Description" name="description">
+
+picture
+      
+
+            
+ 
+            <button type="submit" class="btn">Create Recipe</button>
+      
+    </form>
+</div>
+
+
+
+
+<script>
+    let $addBreedBtn = document.querySelector("#add-breed-btn");
+    let $breedInput = document.querySelector(".breed-div"); 
+    $addBreedBtn.addEventListener("click", e => {
+        e.preventDefault();
+        let $newBreed = document.createElement("input");
+        $newBreed.setAttribute("type", "text");
+        $newBreed.setAttribute("class", "breed");
+        $newBreed.setAttribute("placeholder", "Breed");
+        $newBreed.setAttribute("name", "breed");
+        $breedInput.insertBefore($newBreed, $addBreedBtn);
+    })
+    let $deleteBreedBtn = document.querySelector("#delete-breed-btn");
+    $deleteBreedBtn.addEventListener("click", e => {
+        e.preventDefault();
+        let $breed = $breedInput.querySelectorAll(".breed");
+        let $breedToRemove = $breed[$breed.length-1];
+        $breedInput.removeChild($breedToRemove);
+    })
+</script>
+
+<script>
+    let $addColorBtn = document.querySelector("#add-color-btn");
+    let $colorInput = document.querySelector(".color-div"); 
+    $addColorBtn.addEventListener("click", e => {
+        e.preventDefault();
+        let $newColor = document.createElement("input");
+        $newColor.setAttribute("type", "text");
+        $newColor.setAttribute("class", "color");
+        $newColor.setAttribute("placeholder", "Color");
+        $newColor.setAttribute("name", "color");
+        $breedInput.insertBefore($newColor, $addColorBtn);
+    })
+    let $deleteColorBtn = document.querySelector("#delete-color-btn");
+    $deleteColorBtn.addEventListener("click", e => {
+        e.preventDefault();
+        let $color = $colorInput.querySelectorAll(".color");
+        let $colorToRemove = $color[$color.length-1];
+        $colorInput.removeChild($colorToRemove);
+    })
+</script>

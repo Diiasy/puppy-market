@@ -56,6 +56,7 @@ app.use('/users', signupRouter);
 
 
 
+app.use("/puppies/create", require("./routes/puppies/create"));
 
 app.listen(process.env.port, ()=> {
     console.log("Webserver is listening", process.env.port);
