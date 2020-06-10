@@ -43,20 +43,20 @@ mongoose
 // ROUTERS
 const indexRouter = require('./routes/index');
 const signupRouter = require('./routes/users/signup');
+const puppiesRouter = require('./routes/puppies/list');
+const puppiesCreateRouter = require('./routes/puppies/create');
+const puppiesDetailRouter = require('./routes/puppies/detail');
+
 
 // Routes middleware
 
-
-
-
-
 app.use('/', indexRouter);
 app.use('/users', signupRouter);
+app.use('/puppies', puppiesRouter);
+app.use('/puppies/create', puppiesCreateRouter);
+app.use('/puppies/detail', puppiesDetailRouter);
 
 
-
-
-app.use("/puppies/create", require("./routes/puppies/create"));
 
 app.listen(process.env.port, ()=> {
     console.log("Webserver is listening", process.env.port);

@@ -1,0 +1,9 @@
+{{#each puppy}}
+    <div>
+        <a href="/puppies/detail/{{this._id}}">
+            <img src="/uploads/puppies/{{ this.picture }}" alt="">
+            <p>{{this.name}}</p>
+        </a>
+    </div>
+{{/each}}
+

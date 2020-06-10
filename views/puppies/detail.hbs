@@ -1,0 +1,20 @@
+<h1>{{ puppy.name }}</h1>
+<img src="/uploads/puppies/{{ puppy.picture }}" alt="">
+<p>Breeds:</p>
+<ul>
+    {{#each puppy.breed }}
+        <li>{{this}}</li>
+    {{/each}}
+</ul>
+<p>{{ puppy.birthDate }}</p>
+<p>Colors:</p>
+<ul>
+    {{#each puppy.colors }}
+        <li>{{this}}</li>
+    {{/each}}
+</ul>
+<p>{{ puppy.price }}</p>
+<p>{{ puppy.description }}</p>
+<p>{{ puppy.owner.username }}</p>
+
+

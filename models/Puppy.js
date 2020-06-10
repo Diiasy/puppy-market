@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
 const puppySchema = new mongoose.Schema ({
-    name: { type: String, required: true },
+    name: { type: String },
     breed: { type: [String] },
     birthDate: { type: Date },
     colors: { type: [String] },
     price: { type: String },
-    picture: { type: String, required: true },
+    picture: { type: [String] },
     description: { type: String },
     // owner: { type: mongoose.Schema.ObjectId, ref:"User" }
 })

@@ -1,31 +1,31 @@
 <div>
     <h2>Add puppy</h2>
 
-    <form id="form-create" action="/puppies/create" method="POST">
+    <form id="form-create" action="/puppies/create" enctype="multipart/form-data" method="POST">
             <input type="text" placeholder="Name" name="name">
             <div class="breed-div">
                 <input class="breed" type="text" placeholder="Breed" name="breed">
-                <button class="breed" id="add-breed-btn" class="btn">Add breed</button>
-                <button class="breed" id="delete-breed-btn" class="btn">Delete breed</button>
+                <button id="add-breed-btn" class="btn">Add breed</button>
+                <button id="delete-breed-btn" class="btn">Delete breed</button>
             </div>
             
             <input type="date" placeholder="Birth Date" name="birthDate">
 
             <div class="color-div">
-                <input class="color" type="text" placeholder="Color" name="color">
-                <button class="color" id="add-color-btn" class="btn">Add color</button>
-                <button class="color" id="delete-color-btn" class="btn">Delete color</button>
+                <input class="color" type="text" placeholder="Color" name="colors">
+                <button id="add-color-btn" class="btn">Add color</button>
+                <button id="delete-color-btn" class="btn">Delete color</button>
             </div>
 
             <input type="number" placeholder="Price" name="price" min="0">
             <input type="text" placeholder="Description" name="description">
 
-picture
+            <input type="file" id="main-picture" name="picture">
       
 
             
  
-            <button type="submit" class="btn">Create Recipe</button>
+            <button type="submit" class="btn">Add Puppy</button>
       
     </form>
 </div>
@@ -64,7 +64,7 @@ picture
         $newColor.setAttribute("class", "color");
         $newColor.setAttribute("placeholder", "Color");
         $newColor.setAttribute("name", "color");
-        $breedInput.insertBefore($newColor, $addColorBtn);
+        $colorInput.insertBefore($newColor, $addColorBtn);
     })
     let $deleteColorBtn = document.querySelector("#delete-color-btn");
     $deleteColorBtn.addEventListener("click", e => {
