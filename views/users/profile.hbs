@@ -14,8 +14,8 @@
         <div class="col-5">
             <h5>Puppies by owner</h5>
             {{#each puppies}}
-                    <img src="uploads/puppies/{{this.mainPicture}}" alt="{{this.name}}">
-                    <a href="puppies/detail:{{this._id}}">{{this.name}}</a>
+                    <img src="/uploads/puppies/{{this.mainPicture}}" alt="{{this.name}}">
+                    <a href="/puppies/detail/{{this._id}}">{{this.name}}</a>
                 </div>
             {{/each}}
          </div>
@@ -26,3 +26,4 @@
          </div>
     </div>
 </div>
+

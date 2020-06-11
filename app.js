@@ -74,7 +74,7 @@ app.use(addToNav);
 app.use('/', indexRouter);
 app.use('/users', signupRouter);
 app.use('/users', loginRouter);
-app.use('/users', protectMiddleWare, profileRouter);
+app.use('/users', profileRouter);
 app.use('/users', protectMiddleWare, logoutRouter);
 app.use('/puppies', puppiesRouter);
 app.use('/puppies/create', puppiesCreateRouter);
