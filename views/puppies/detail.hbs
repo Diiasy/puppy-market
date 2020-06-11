@@ -22,9 +22,11 @@
 {{#each puppy.pictures }}
     <img src="/uploads/puppies/{{ this }}" alt="">
 {{/each}}
+<a href="/users/profile?id={{user._id}}">
+    <p>Owner: {{ puppy.owner.username }}</p>
+    <img src="/uploads/profile-pictures/{{ puppy.owner.profileImage }}" alt="">
+</a>
 
-<p>Owner: {{ puppy.owner.username }}</p>
-<img src="/uploads/profile-pictures/{{ puppy.owner.profileImage }}" alt="">
 
 {{#if isOwner}}
     <a href="/puppies/update/{{puppy._id}}">Update puppy</a>
