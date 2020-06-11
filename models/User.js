@@ -26,7 +26,6 @@ const userSchema = new Schema(
       type: String,
       trim: true,
       required: [true, 'Name is required.'],
-      unique: true
     },
     profileImage: {
       type: String,
