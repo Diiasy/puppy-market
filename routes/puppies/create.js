@@ -6,34 +6,39 @@ const multer  = require('multer');
 const upload = multer({ dest: './public/uploads/puppies/' });
 
 app.get('/', (req, res)=>{
-    // User.find()
-    // .then((owner)=>{
-    //     res.render('puppies/create', {owner});
-    // })
     res.render('puppies/create')
 })
 
-app.post('/', upload.single("picture"), (req, res)=>{
-    const { name, breed, birthDate, colors, price, description } = req.body;
+app.post('/', upload.array("pictures"), (req, res)=>{    
+
+    const { name, gender, breed, birthDate, colors, price, description } = req.body;
     const owner = req.session.user._id;
 
-    let picture = "";
-    if (req.file){
-        picture = req.file.filename;
+    let mainPicture = "";
+    if (req.files){
+        mainPicture = req.files[0].filename;
     } else {
         res.render('puppies/create',  { errorMessage: 'You must upload a picture of your puppy.' });
         return;
     }
+    
+    let pictures = [];
+    let array = req.files.slice(1);
+    if (array){
+        array.forEach(el=>{pictures.push(el.filename)});
+    } 
 
     Puppy.create({
         name,
+        mainPicture,
+        gender,
         breed,
         birthDate,
         colors,
         price,
         description,
         owner,
-        picture
+        pictures
     })
     .then(puppy=>{
         res.redirect(`/puppies/detail/${puppy._id}`)

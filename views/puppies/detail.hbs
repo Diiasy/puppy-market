@@ -1,20 +1,31 @@
 <h1>{{ puppy.name }}</h1>
-<img src="/uploads/puppies/{{ puppy.picture }}" alt="">
+
+<img src="/uploads/puppies/{{ puppy.mainPicture }}" alt="">
+
 <p>Breeds:</p>
 <ul>
     {{#each puppy.breed }}
         <li>{{this}}</li>
     {{/each}}
 </ul>
+<p>Gender: {{ puppy.gender }}</p>
 <p>Birthday: {{ puppy.birthDate }}</p>
 <p>Colors:</p>
 <ul>
     {{#each puppy.colors }}
-        <li>{{this}}</li>
+        <li>{{ this }}</li>
     {{/each}}
 </ul>
 <p>Price: {{ puppy.price }}€</p>
 <p>Description: {{ puppy.description }}</p>
+<p>Additionnal pictures:</p>
+{{#each puppy.pictures }}
+    <img src="/uploads/puppies/{{ this }}" alt="">
+{{/each}}
+
 <p>Owner: {{ puppy.owner.username }}</p>
+<img src="/uploads/profile-pictures/{{ puppy.owner.profileImage }}" alt="">
+
+
 
 

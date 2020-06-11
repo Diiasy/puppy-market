@@ -3,6 +3,11 @@
 
     <form id="form-create" action="/puppies/create" enctype="multipart/form-data" method="POST">
             <input type="text" placeholder="Name" name="name">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
             <div class="breed-div">
                 <input class="breed" type="text" placeholder="Breed" name="breed">
                 <button id="add-breed-btn" class="btn">Add breed</button>
@@ -20,14 +25,20 @@
             <input type="number" placeholder="Price" name="price" min="0">
             <input type="text" placeholder="Description" name="description">
 
-            <input type="file" id="main-picture" name="picture">
-      
-
+            <input type="file" id="main-picture" name="pictures">
+            <div class="pictures-div">
+                <input multiple class="pictures" type="file" name="pictures">
+                <button id="add-picture-btn" class="btn">Add picture</button>
+                <button id="delete-picture-btn" class="btn">Delete picture</button>
+            </div>
             
- 
             <button type="submit" class="btn">Add Puppy</button>
       
     </form>
+
+    {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
 </div>
 
 
@@ -52,9 +63,7 @@
         let $breedToRemove = $breed[$breed.length-1];
         $breedInput.removeChild($breedToRemove);
     })
-</script>
 
-<script>
     let $addColorBtn = document.querySelector("#add-color-btn");
     let $colorInput = document.querySelector(".color-div"); 
     $addColorBtn.addEventListener("click", e => {
@@ -73,4 +82,24 @@
         let $colorToRemove = $color[$color.length-1];
         $colorInput.removeChild($colorToRemove);
     })
+
+
+    let $addPictureBtn = document.querySelector("#add-picture-btn");
+    let $pictureInput = document.querySelector(".pictures-div");
+    $addPictureBtn.addEventListener("click", e =>{
+        e.preventDefault();
+        let $newPicture = document.createElement("input");
+        $newPicture.setAttribute("type", "file");
+        $newPicture.setAttribute("class", "pictures");
+        $newPicture.setAttribute("name", "pictures");
+        $pictureInput.insertBefore($newPicture, $addPictureBtn);
+    })
+    let $deletePictureBtn = document.querySelector("#delete-picture-btn");
+    $deletePictureBtn.addEventListener("click", e => {
+        e.preventDefault();
+        let $picture = document.querySelectorAll(".pictures");
+        let $pictureToRemove = $picture[$picture.length-1];
+        $pictureInput.removeChild($pictureToRemove);
+    })
+
 </script>
