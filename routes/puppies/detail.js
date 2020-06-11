@@ -6,12 +6,23 @@ app.get("/:id", (req, res)=>{
     let puppyId = req.params.id
     Puppy.findById(puppyId)
         .populate("owner")
-        .then((puppy)=>{
-            res.render("puppies/detail", {puppy})
+        .then(puppy=>{
+            let userId = req.session.user._id;
+            Puppy.find({owner: userId})
+                .then(puppyOwner=>{
+                    let isOwner = false;
+                    puppyOwner.forEach(el=>{
+                        if (el.id === puppyId){
+                            isOwner = true;
+                        }
+                    })
+                    res.render("puppies/detail", {puppy, isOwner});
+                })
+            
         })
-    .catch((err)=> {
-        console.log(err);
-    })
+        .catch((err)=> {
+            console.log(err);
+        })
 })
 
 module.exports = app;
