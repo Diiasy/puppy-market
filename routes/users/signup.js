@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 
 
 app.post('/signup', upload.single("picture"),(req, res, next) => {
-  const { username, email, password, city } = req.body;
+  const { username, email, name, password, city } = req.body;
   const profileImage = req.file.filename;
 
   if (!username || !email || !password || !city) {
@@ -34,6 +34,7 @@ app.post('/signup', upload.single("picture"),(req, res, next) => {
       username,
       email,
       city,
+      name,
       passwordHash: hashedPassword,
       profileImage
     });
@@ -57,11 +58,7 @@ app.post('/signup', upload.single("picture"),(req, res, next) => {
 
 
 app.get("/signup", (req,res) => {
-  if(req.query.error){
-      res.render("users/signup", {error: true, message: req.query.error});
-  } else {
-      res.render("users/signup");
-  }
+  res.render("users/signup");
 });
 
 module.exports = app;

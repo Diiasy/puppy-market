@@ -22,6 +22,12 @@ const userSchema = new Schema(
       type: String,
       required: [true, 'Password is required.']
     },
+    name: {
+      type: String,
+      trim: true,
+      required: [true, 'Name is required.'],
+      unique: true
+    },
     profileImage: {
       type: String,
       required: [true, 'Profile image is required.']

@@ -7,14 +7,17 @@
     <ul class="navbar-nav">
         {{#if loggedIn}}
           <li class="nav-item">
-            <a class="nav-link" href="users/logout">Logout</a>
+            <a class="nav-item nav-link" href="/users/profile?id={{user._id}}">{{user.username}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/logout">Logout</a>
           </li>
         {{else}}
             <li class="nav-item">
-                <a class="nav-link" href="users/signup">Sign up</a>
+                <a class="nav-link" href="/users/signup">Sign up</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="users/login">Login</a>
+                <a class="nav-link" href="/users/login">Login</a>
             </li>
         {{/if}}
     </ul>

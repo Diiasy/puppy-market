@@ -43,6 +43,7 @@ mongoose
 const indexRouter = require('./routes/index');
 const signupRouter = require('./routes/users/signup');
 const loginRouter = require('./routes/users/login');
+const profileRouter = require('./routes/users/profile');
 const logoutRouter = require('./routes/users/logout');
 const puppiesRouter = require('./routes/puppies/list');
 const puppiesCreateRouter = require('./routes/puppies/create');
@@ -73,6 +74,7 @@ app.use(addToNav);
 app.use('/', indexRouter);
 app.use('/users', signupRouter);
 app.use('/users', loginRouter);
+app.use('/users', profileRouter);
 app.use('/users', logoutRouter);
 app.use('/puppies', puppiesRouter);
 app.use('/puppies/create', puppiesCreateRouter);
