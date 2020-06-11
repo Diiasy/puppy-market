@@ -44,6 +44,7 @@ const indexRouter = require('./routes/index');
 const signupRouter = require('./routes/users/signup');
 const loginRouter = require('./routes/users/login');
 const profileRouter = require('./routes/users/profile');
+const updateUserRouter = require('./routes/users/updateUser');
 const logoutRouter = require('./routes/users/logout');
 const puppiesRouter = require('./routes/puppies/list');
 const puppiesCreateRouter = require('./routes/puppies/create');
@@ -54,10 +55,10 @@ const puppiesUpdateRouter = require('./routes/puppies/update');
 // Protect Middleware
 function protectMiddleWare(req,res,next){
     console.log("Protect Middleware called");
-    if(req.session.currentUser){
+    if(req.session.user){
         next();
     } else {
-        res.redirect("/login");
+        res.redirect("/users/login");
     }
 }
 
@@ -77,7 +78,8 @@ app.use('/', indexRouter);
 app.use('/users', signupRouter);
 app.use('/users', loginRouter);
 app.use('/users', profileRouter);
-app.use('/users', logoutRouter);
+app.use('/users', protectMiddleWare, logoutRouter);
+app.use('/users', updateUserRouter);
 app.use('/puppies', puppiesRouter);
 app.use('/puppies/create', puppiesCreateRouter);
 app.use('/puppies/detail', puppiesDetailRouter);
