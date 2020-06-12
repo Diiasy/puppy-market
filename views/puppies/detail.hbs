@@ -1,6 +1,6 @@
 <h1>{{ puppy.name }}</h1>
 
-<img src="/uploads/puppies/{{ puppy.mainPicture }}" alt="">
+<img src="{{ puppy.mainPicturePath }}" alt="">
 
 <p>Breeds:</p>
 <ul>
@@ -19,8 +19,8 @@
 <p>Price: {{ puppy.price }}€</p>
 <p>Description: {{ puppy.description }}</p>
 <p>Additionnal pictures:</p>
-{{#each puppy.pictures }}
-    <img src="/uploads/puppies/{{ this }}" alt="">
+{{#each puppy.picturesPath }}
+    <img src="{{ this }}" alt="">
 {{/each}}
 <a href="/users/profile?id={{puppy.owner._id}}">
     <p>Owner: {{ puppy.owner.username }}</p>
@@ -32,6 +32,3 @@
     <a href="/puppies/update/{{puppy._id}}">Update puppy</a>
     <a href="/puppies/delete/{{puppy._id}}">Delete puppy</a>
 {{/if}}
-
-
-

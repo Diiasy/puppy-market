@@ -1,36 +1,41 @@
 const express = require("express");
 const app = express();
 const Puppy = require("../../models/Puppy");
-const User = require("../../models/User");
-const multer  = require('multer');
-const upload = multer({ dest: './public/uploads/puppies/' });
+const uploadCloudPuppies = require('../../config/cloudinary.js');
 
 app.get('/', (req, res)=>{
     res.render('puppies/create')
 })
 
-app.post('/', upload.array("pictures"), (req, res)=>{    
+app.post('/', uploadCloudPuppies.array("pictures"), (req, res)=>{    
 
     const { name, gender, breed, birthDate, colors, price, description } = req.body;
     const owner = req.session.user._id;
 
     let mainPicture = "";
+    let mainPicturePath = "";
     if (req.files){
-        mainPicture = req.files[0].filename;
+        mainPicture = req.files[0].originalname;
+        mainPicturePath = req.files[0].path;
     } else {
         res.render('puppies/create',  { errorMessage: 'You must upload a picture of your puppy.' });
         return;
     }
     
     let pictures = [];
+    let picturesPath = [];
     let array = req.files.slice(1);
     if (array){
-        array.forEach(el=>{pictures.push(el.filename)});
+        array.forEach(el=>{
+            pictures.push(el.originalname);
+            picturesPath.push(el.path);
+        });
     } 
 
     Puppy.create({
         name,
         mainPicture,
+        mainPicturePath,
         gender,
         breed,
         birthDate,
@@ -38,7 +43,8 @@ app.post('/', upload.array("pictures"), (req, res)=>{
         price,
         description,
         owner,
-        pictures
+        pictures,
+        picturesPath
     })
     .then(puppy=>{
         res.redirect(`/puppies/detail/${puppy._id}`)

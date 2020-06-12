@@ -40,16 +40,17 @@
             <input type="text" value="{{puppy.description}}" placeholder="Description" name="description">
 
             <div class="main-picture-div">
-                <img class="main-picture" src="/uploads/puppies/{{ puppy.mainPicture }}" alt="">
+                <img class="main-picture" src="{{ puppy.mainPicturePath }}" alt="">
                 <button id="delete-main-picture-btn" class="btn">Delete main picture</button>
                 <input type="text" hidden value="{{puppy.mainPicture}}" name="mainPicture">
+                <input type="text" hidden value="{{puppy.mainPicturePath}}" name="mainPicturePath">
             </div>
 
-            <div class="pictures-div">
+            {{!-- <div class="pictures-div">
                 <input multiple class="pictures" type="file" name="pictures">
                 <button id="add-picture-btn" class="btn">Add picture</button>
                 <button id="delete-picture-btn" class="btn">Delete picture</button>
-            </div>
+            </div> --}}
             
             <button type="submit" class="btn">Update Puppy</button>
             
