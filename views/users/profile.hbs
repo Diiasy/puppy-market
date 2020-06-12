@@ -5,8 +5,9 @@
             <h6>Name: {{user.name}}</h6>
             <h6>Email: {{user.email}}</h6>
             <h6>City: {{user.city}}</h6>
+            {{#if isOwner}}
             <h6><a href="/users/updateUser?id={{user._id}}">Update profile</a></h6>
-
+            {{/if}}
         </div>
         <div class="col-5">
             <img src="/uploads/profile-pictures/{{user.profileImage}}" alt="{{user.username}} img">

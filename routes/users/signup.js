@@ -8,11 +8,11 @@ var upload = multer({ dest: './public/uploads/profile-pictures' });
 const mongoose = require('mongoose');
 
 
-app.post('/signup', upload.single("picture"),(req, res, next) => {
+app.post('/', upload.single("picture"),(req, res, next) => {
   const { username, email, name, password, city } = req.body;
   const profileImage = req.file.filename;
 
-  if (!username || !email || !password || !city) {
+  if (!username || !email || !password || !city ||!name) {
       res.render('users/signup', { errorMessage: 'All fields are mandatory. Please provide your username, email and password.' });
       return;
   }
@@ -57,7 +57,7 @@ app.post('/signup', upload.single("picture"),(req, res, next) => {
 });
 
 
-app.get("/signup", (req,res) => {
+app.get("/", (req,res) => {
   res.render("users/signup");
 });
 

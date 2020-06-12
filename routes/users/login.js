@@ -8,9 +8,9 @@ var upload = multer({ dest: './public/uploads/profile-pictures' });
 const mongoose = require('mongoose');
 
 
-app.get('/login', (req, res) => res.render('users/login'));
+app.get('/', (req, res) => res.render('users/login'));
 
-app.post('/login', (req, res, next) => {
+app.post('/', (req, res, next) => {
     const { email, password } = req.body;
 
     if (email === '' || password === '') {
@@ -27,6 +27,8 @@ app.post('/login', (req, res, next) => {
             return;
         } else if (bcryptjs.compareSync(password, user.passwordHash)) {
             req.session.user = user;
+            req.session.buyer = true;
+            req.session.seller = false;
             res.redirect('/');
         } else {
             res.render('users/login', { errorMessage: 'Incorrect password.' });

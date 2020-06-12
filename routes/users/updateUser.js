@@ -7,7 +7,7 @@ var multer  = require('multer');
 var upload = multer({ dest: './public/uploads/profile-pictures' });
 const mongoose = require('mongoose');
 
-app.get('/updateUser', (req, res) => {
+app.get('/', (req, res) => {
     let userId = req.query.id;
     User.findById(userId)
     .then((user) => {
@@ -18,7 +18,7 @@ app.get('/updateUser', (req, res) => {
     });
 });
 
-app.post('/updateUser', upload.single("picture"),(req, res, next) => {
+app.post('/', upload.single("picture"),(req, res, next) => {
     let userId = req.body._id;
     const {name, city } = req.body;
     let profileImage = req.body.profileImage;
@@ -36,7 +36,7 @@ app.post('/updateUser', upload.single("picture"),(req, res, next) => {
       })
     .then(userFromDB => {
       console.log('Updated user is: ', userFromDB);
-      res.redirect('/');
+      res.redirect(`/users/profile?id=${userId}`);
     })
     .catch(error => {
       if (error instanceof mongoose.Error.ValidationError) {

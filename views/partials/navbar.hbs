@@ -9,6 +9,18 @@
             <a class="nav-link" href="/puppies">Puppies list</a>
         </li>
         {{#if loggedIn}}
+          {{#if seller}}
+            <li class="nav-item">
+               <a class="nav-item nav-link" href="/puppies/create">Sell a Pup</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-item nav-link" href="/users/mode/buyer">Switch to Buyer</a>
+            </li>
+          {{else}}
+            <li class="nav-item">
+               <a class="nav-item nav-link" href="/users/mode/seller">Switch to Seller</a>
+            </li>
+          {{/if}}
           <li class="nav-item">
             <a class="nav-item nav-link" href="/users/profile?id={{user._id}}">{{user.username}}</a>
           </li>
@@ -26,3 +38,5 @@
     </ul>
   </div>
 </nav>
+
+
