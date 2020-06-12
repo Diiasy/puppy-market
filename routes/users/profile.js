@@ -9,7 +9,7 @@ var upload = multer({ dest: './public/uploads/profile-pictures' });
 const mongoose = require('mongoose');
 
 
-app.get("/profile", (req, res) => {
+app.get("/", (req, res) => {
     let userId = req.query.id;
     let isOwner = false;
     if (req.session.user._id === userId){

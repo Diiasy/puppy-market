@@ -46,6 +46,8 @@ const loginRouter = require('./routes/users/login');
 const profileRouter = require('./routes/users/profile');
 const updateUserRouter = require('./routes/users/updateUser');
 const logoutRouter = require('./routes/users/logout');
+const modeRouter = require('./routes/users/mode');
+
 const puppiesRouter = require('./routes/puppies/list');
 const puppiesCreateRouter = require('./routes/puppies/create');
 const puppiesDetailRouter = require('./routes/puppies/detail');
@@ -62,7 +64,7 @@ function protectMiddleWare(req,res,next){
     }
 }
 
-function addToNav(req,res,next){
+function mapToNav(req,res,next){
     console.log("Middleware for nav called");
     if(req.session.user){
         res.locals.loggedIn = true;
@@ -71,18 +73,39 @@ function addToNav(req,res,next){
     next();
 }
 
-app.use(addToNav);
+
+function mapModeToNav(req,res,next){
+
+    if(req.session.buyer) {
+        res.locals.buyer = true;
+        res.locals.seller = false;
+    } else {
+        res.locals.buyer = false;
+        res.locals.seller = true;
+    }
+    console.log(`Middleware mode called, session buyer is ${req.session.buyer}`);
+
+
+    next();
+}
+
+
+app.use(mapToNav);
+app.use(mapModeToNav);
+
 
 // Routes Middleware
 app.use('/', indexRouter);
-app.use('/users', signupRouter);
-app.use('/users', loginRouter);
-app.use('/users', profileRouter);
-app.use('/users', protectMiddleWare, logoutRouter);
-app.use('/users', updateUserRouter);
+app.use('/users/signup', signupRouter);
+app.use('/users/login', loginRouter);
+app.use('/users/profile',protectMiddleWare, profileRouter);
+app.use('/users/logout', protectMiddleWare, logoutRouter);
+app.use('/users/mode', protectMiddleWare, modeRouter);
+
+app.use('/users/updateUser', updateUserRouter);
 app.use('/puppies', puppiesRouter);
 app.use('/puppies/create', puppiesCreateRouter);
-app.use('/puppies/detail', puppiesDetailRouter);
+app.use('/puppies/detail',protectMiddleWare, puppiesDetailRouter);
 app.use('/puppies/delete', puppiesDeleteRouter);
 app.use('/puppies/update', puppiesUpdateRouter);
 
