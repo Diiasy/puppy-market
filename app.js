@@ -53,6 +53,9 @@ const puppiesCreateRouter = require('./routes/puppies/create');
 const puppiesDetailRouter = require('./routes/puppies/detail');
 const puppiesDeleteRouter = require('./routes/puppies/delete');
 const puppiesUpdateRouter = require('./routes/puppies/update');
+const puppiesCommentRouter = require('./routes/puppies/comment');
+
+
 
 // Protect Middleware
 function protectMiddleWare(req,res,next){
@@ -112,6 +115,8 @@ app.use('/puppies/create',protectMiddleWare, isSeller, puppiesCreateRouter);
 app.use('/puppies/detail',protectMiddleWare, puppiesDetailRouter);
 app.use('/puppies/delete', puppiesDeleteRouter);
 app.use('/puppies/update', puppiesUpdateRouter);
+app.use('/puppies/comment', puppiesCommentRouter);
+
 
 app.listen(process.env.port, ()=> {
     console.log("Webserver is listening", process.env.port);
