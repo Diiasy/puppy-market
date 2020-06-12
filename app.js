@@ -73,7 +73,6 @@ function mapToNav(req,res,next){
     next();
 }
 
-
 function mapModeToNav(req,res,next){
 
     if(req.session.buyer) {
@@ -84,11 +83,16 @@ function mapModeToNav(req,res,next){
         res.locals.seller = true;
     }
     console.log(`Middleware mode called, session buyer is ${req.session.buyer}`);
-
-
     next();
 }
 
+function isSeller(req, res, next){
+    if(res.locals.seller){
+        next();
+    } else {
+        res.redirect("/");
+    }
+}
 
 app.use(mapToNav);
 app.use(mapModeToNav);
@@ -104,7 +108,7 @@ app.use('/users/mode', protectMiddleWare, modeRouter);
 
 app.use('/users/updateUser', updateUserRouter);
 app.use('/puppies', puppiesRouter);
-app.use('/puppies/create', puppiesCreateRouter);
+app.use('/puppies/create',protectMiddleWare, isSeller, puppiesCreateRouter);
 app.use('/puppies/detail',protectMiddleWare, puppiesDetailRouter);
 app.use('/puppies/delete', puppiesDeleteRouter);
 app.use('/puppies/update', puppiesUpdateRouter);
