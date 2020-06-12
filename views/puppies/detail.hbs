@@ -1,6 +1,6 @@
 <h1>{{ puppy.name }}</h1>
 
-<img src="/uploads/puppies/{{ puppy.mainPicture }}" alt="">
+<img src="{{ puppy.mainPicturePath }}" alt="">
 
 <p>Breeds:</p>
 <ul>
@@ -19,8 +19,8 @@
 <p>Price: {{ puppy.price }}€</p>
 <p>Description: {{ puppy.description }}</p>
 <p>Additionnal pictures:</p>
-{{#each puppy.pictures }}
-    <img src="/uploads/puppies/{{ this }}" alt="">
+{{#each puppy.picturesPath }}
+    <img src="{{ this }}" alt="">
 {{/each}}
 <a href="/users/profile?id={{puppy.owner._id}}">
     <p>Owner: {{ puppy.owner.username }}</p>
@@ -34,4 +34,15 @@
 {{/if}}
 
 
+<h2>Comments</h2>
+{{#each puppy.comments}}
+    <p>{{this.content}}</p>
+    <p>{{this.author.username}}</p>
+{{/each}}
 
+<h2>Post a comment</h2>
+<form action="/puppies/comment" method="POST">
+    <input type="text" id="content" name="content" placeholder="Your comment" >
+    <button type="submit">Post comment</button>
+    <input type="text" hidden value="{{puppy.id}}" name="id">
+</form>

@@ -8,9 +8,15 @@ const puppySchema = new mongoose.Schema ({
     colors: { type: [String] },
     price: { type: String },
     mainPicture: { type: String },
+    mainPicturePath: { type: String },
     pictures: { type: [String] },
+    picturesPath: { type: [String] },
     description: { type: String },
-    owner: { type: mongoose.Schema.ObjectId, ref:"User" }
+    owner: { type: mongoose.Schema.ObjectId, ref: "User" }, 
+    comments: [{
+        author: { type: mongoose.Schema.ObjectId, ref: "User" },
+        content: { type: String }
+      }]
 })
 
 const Puppy = mongoose.model("Puppy", puppySchema);

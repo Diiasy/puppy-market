@@ -6,6 +6,7 @@ app.get("/:id", (req, res)=>{
     let puppyId = req.params.id
     Puppy.findById(puppyId)
         .populate("owner")
+        .populate("comments.author")
         .then(puppy=>{
             let userId = req.session.user._id;
             Puppy.find({owner: userId})

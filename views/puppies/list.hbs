@@ -6,36 +6,13 @@
                 <a class="puppy-title" href="/puppies/detail/{{this._id}}">
                 <h5 class="card-title p-2">{{this.name}}</h5>
 
-                <img src="/uploads/puppies/{{ this.mainPicture }}" class="card-img-top" alt="...">
+                <img src="{{ this.mainPicturePath }}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <p class="card-text">{{this.description}}</p>
                 </div>
             </div>
         </div>
         {{/each}}
-
     </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    {{!-- {{#each puppy}}
-        <div class="col-sm-8 col-md-6 col-lg-4 p-2 d-flex justify-content-center dog-card">
-
-                <img  class="img-dog" src="/uploads/puppies/{{ this.mainPicture }}" alt="">
-                <p >{{this.description}}</p>
-            </a>
-
-        </div>
-    {{/each}} --}}
