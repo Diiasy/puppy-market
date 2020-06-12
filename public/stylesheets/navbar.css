@@ -1,0 +1,42 @@
+.navbar {
+    background-color: rgb(13, 27, 13);
+}
+
+.nav {
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: space-evenly;
+}
+
+.nav-list {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.nav-link {
+    color: white;
+}
+
+.nav-link:hover {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+}
+
+.brand a {
+    color: white;
+}
+
+.brand img {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    margin-left: 25px;
+    border:0;
+    box-shadow: none;
+    margin-bottom: 0px
+}
+

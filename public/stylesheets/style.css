@@ -1,3 +1,29 @@
-img{
-    max-width: 500px;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 300px;
+}
+
+.puppy-title {
+    color: black;
+}
+
+.puppy-title:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.puppy-title h5:hover {
+    font-weight: 600;
+}
+
+.center-box {
+    text-align: center;
+
 }
