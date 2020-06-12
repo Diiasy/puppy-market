@@ -4,11 +4,13 @@ const puppySchema = new mongoose.Schema ({
     name: { type: String },
     gender : { type: String, enum: ['Male', 'Female'] },
     breed: { type: [String] },
-    birthDate: { type: Date },
+    birthDate: { type: String },
     colors: { type: [String] },
     price: { type: String },
     mainPicture: { type: String },
+    mainPicturePath: { type: String },
     pictures: { type: [String] },
+    picturesPath: { type: [String] },
     description: { type: String },
     owner: { type: mongoose.Schema.ObjectId, ref:"User" }
 })

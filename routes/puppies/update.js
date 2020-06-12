@@ -2,8 +2,7 @@ const express = require("express");
 const app = express();
 const Puppy = require("../../models/Puppy");
 const User = require("../../models/User");
-const multer  = require('multer');
-const upload = multer({ dest: './public/uploads/puppies/' });
+const uploadCloudPuppies = require('../../config/cloudinary.js');
 
 app.get("/:id", (req, res) =>{
     User.find()
@@ -29,17 +28,20 @@ app.get("/:id", (req, res) =>{
     })
 })
 
-app.post("/", upload.array("pictures"), (req, res)=>{
+app.post("/", uploadCloudPuppies.array("pictures"), (req, res)=>{
     let puppyId = req.body.id;
 
     let mainPicture = req.body.mainPicture;
+    let mainPicturePath = req.body.mainPicturePath;
     if (req.files[0]){
-        mainPicture = req.files[0].filename;
+        mainPicture = req.files[0].originalname;
+        mainPicturePath = req.files[0].path;
     }
 
     Puppy.findByIdAndUpdate(puppyId, {
         name: req.body.name,
         mainPicture,
+        mainPicturePath,
         gender: req.body.gender,
         breed: req.body.breed,
         birthDate: req.body.birthDate,
