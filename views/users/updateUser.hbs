@@ -1,38 +1,40 @@
-<div class="container">
-  <div id="form">
-    <h2>Update your details</h2>
-    <form action="/users/updateUser" method="POST"  enctype="multipart/form-data">
+<div class="container d-flex justify-content-center m-5">
+  <div class="col-sm-8 col-md-6 col-lg-4">
+    <div id="form">
+      <h2>Update your details</h2>
+      <form action="/users/updateUser" method="POST"  enctype="multipart/form-data">
 
-      <div class="form-group">
-        <label for="input-name">Your Name</label>
-        <input type="text" id="input-name" class="form-control" name="name" value="{{user.name}}" />
-      </div>
+        <div class="form-group">
+          <label for="input-name">Your Name</label>
+          <input type="text" id="input-name" class="form-control" name="name" value="{{user.name}}" />
+        </div>
 
-      <div class="form-group">
-        <label for="input-city">City</label>
-        <input type="text" id="input-city" class="form-control" name="city" value="{{user.city}}" />
-      </div>
+        <div class="form-group">
+          <label for="input-city">City</label>
+          <input type="text" id="input-city" class="form-control" name="city" value="{{user.city}}" />
+        </div>
 
-      <div class="form-group main-picture-div">
-        <label for="input-picture">Profile Picture</label>
-        <img class="main-picture" src="/uploads/profile-pictures/{{ user.profileImage }}" alt="">
-        <button id="delete-main-picture-btn" class="btn">Delete main picture</button>
-        <input value="{{user.profileImage}}" type="hidden" name="profileImage">
+        <div class="form-group main-picture-div">
+          <label for="input-picture">Profile Picture</label>
+          <img class="main-picture" src="/uploads/profile-pictures/{{ user.profileImage }}" alt="">
+          <button id="delete-main-picture-btn" class="btn">Delete main picture</button>
+          <input value="{{user.profileImage}}" type="hidden" name="profileImage">
 
-      </div>
+        </div>
 
 
 
-      <div class="row m-2">
-          <input value="{{user._id}}" type="hidden" name="_id">
-      </div> 
+        <div class="row m-2">
+            <input value="{{user._id}}" type="hidden" name="_id">
+        </div> 
 
-      <button type="submit" class="btn btn-primary">Update User</button>
+        <button type="submit" class="btn btn-primary">Update User</button>
 
-      {{#if errorMessage}}
-        <p class="error">{{errorMessage}}</p>
-      {{/if}}
-    </form>
+        {{#if errorMessage}}
+          <p class="error">{{errorMessage}}</p>
+        {{/if}}
+      </form>
+    </div>
   </div>
 </div>
 

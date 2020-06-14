@@ -1,44 +1,87 @@
-<div>
-    <h2>Add puppy</h2>
+<div class="container d-flex justify-content-center m-5">
+  <div class="col-sm-8 col-md-6">
+        <form id="form form-create-puppy" action="/puppies/create" enctype="multipart/form-data" method="POST">
+            <h2>Add your Pup</h2>
 
-    <form id="form-create-puppy" action="/puppies/create" enctype="multipart/form-data" method="POST">
-            <input type="text" placeholder="Name" name="name">
-            <label for="gender">Gender:</label>
-            <select id="gender" name="gender">
+            <div class="form-group">
+
+            <label for="input-username">Name of Puppy</label>
+            <input class="form-control" type="text" placeholder="Name" name="name">
+
+            </div>
+
+            <div class="form-group">
+
+            <label for="gender">Gender</label>
+            <select class="form-control" id="gender" name="gender">
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
             </select>
-            <div class="breed-div">
-                <input class="breed" type="text" placeholder="Breed" name="breed">
-                <button id="add-breed-btn" class="btn">Add breed</button>
-                <button id="delete-breed-btn" class="btn">Delete breed</button>
+
             </div>
-            
-            <input type="date" placeholder="Birth Date" name="birthDate">
+
+            <div class="form-group">
+                <div class="breed-div">
+                    <label for="breed">Breed</label>
+
+                    <input class="form-control" class="breed" type="text" placeholder="Breed" name="breed">
+                    <button id="add-breed-btn" class="btn">Add breed</button>
+                    <button id="delete-breed-btn" class="btn">Delete breed</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="birthDate">Date of Birth</label>
+
+                <input class="form-control" type="date" placeholder="Birth Date" name="birthDate">
+
+            </div>
+
+        <div class="form-group">
 
             <div class="color-div">
+                <label for="colors">Coat Colors</label>
+
                 <input class="color" type="text" placeholder="Color" name="colors">
                 <button id="add-color-btn" class="btn">Add color</button>
                 <button id="delete-color-btn" class="btn">Delete color</button>
             </div>
+        </div>
+
+        <div class="form-group">
+            <label for="price">Price</label>
+
 
             <input type="number" placeholder="Price" name="price" min="0">
             <input type="text" placeholder="Description" name="description">
 
+        </div>
+
+        <div class="form-group">
+            <label for="mainPicture">Profile Picture</label>
+        </div>
+        <div class="form-group">
             <input type="file" id="main-picture" name="pictures">
+        </div>
+        <div class="form-group">
+            <label for="OtherPictures">More Pictures</label>
+        </div>
+        <div class="form-group">
             <div class="pictures-div">
                 <input multiple class="pictures" type="file" name="pictures">
                 <button id="add-picture-btn" class="btn">Add picture</button>
                 <button id="delete-picture-btn" class="btn">Delete picture</button>
             </div>
-            
-            <button type="submit" class="btn">Add Puppy</button>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Pupp</button>
       
-    </form>
+        </form>
 
     {{#if errorMessage}}
       <p class="error">{{errorMessage}}</p>
     {{/if}}
+    </div>
 </div>
 
 

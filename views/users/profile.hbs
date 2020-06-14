@@ -1,32 +1,40 @@
-<div class="container">
-    <div class="row">
-        <div class="col-5">
-            <h5 >{{user.username}}</h5>
-            <h6>Name: {{user.name}}</h6>
-            <h6>Email: {{user.email}}</h6>
-            <h6>City: {{user.city}}</h6>
+<div class="container m-5">
+    <div class="row justify-content-center m-2">
+        <div class="col-sm-8 col-md-6 col-lg-4">
+            <h4>{{user.username}}</h4>
+            <p>Name: {{user.name}}</p>
+            <p>Email: {{user.email}}</p>
+            <p>City: {{user.city}}</p>
             {{#if isOwner}}
-            <h6><a href="/users/updateUser?id={{user._id}}">Update profile</a></h6>
+            <p><a href="/users/updateUser?id={{user._id}}">Update profile</a></p>
             {{/if}}
         </div>
-        <div class="col-5">
+        <div class="col-sm-8 col-md-6 col-lg-4">
             <img src="/uploads/profile-pictures/{{user.profileImage}}" alt="{{user.username}} img">
         </div>
     </div>
-        <div class="row">
-        <div class="col-5">
-            <h5>Puppies by owner</h5>
-            {{#each puppies}}
-                    <img src="/uploads/puppies/{{this.mainPicture}}" alt="{{this.name}}">
-                    <a href="/puppies/detail/{{this._id}}">{{this.name}}</a>
-                </div>
-            {{/each}}
-         </div>
+    <div class="row justify-content-center m-4">
+        <h4>Puppies by owner</h4>
     </div>
-    <div class="row">
-        <div class="col-5">
-            <h5>Reviews</h5>
-         </div>
+       <div class="row">
+        {{#each puppies}}
+          <div class="col-sm-8 col-md-6 col-lg-4 p-2 d-flex justify-content-center">
+            <div class="card">
+                <a class="puppy-title" href="/puppies/detail/{{this._id}}">
+                <h5 class="card-title p-2">{{this.name}}</h5>
+
+                <img src="{{ this.mainPicturePath }}" class="card-img-top" alt="...">
+
+            </div>
+        </div>
+        {{/each}}
+        </div>
+
+    </div>
+    <div class="row justify-content-center m-4">
+        <div class="col-sm-8 col-md-6 col-lg-4">
+            <h4>Reviews</h4>
+        </div>
     </div>
 </div>
 

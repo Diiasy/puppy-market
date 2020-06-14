@@ -1,23 +1,26 @@
-<div class="container">
-  <div id="form">
-    <h2>Login</h2>
-    <form action="/users/login" method="POST">
-
-      <div class="form-group">
+<div class="container d-flex justify-content-center m-5">
+  <div class="col-sm-8 col-md-6">
+    <div id="form">
+      <h2>Login</h2>
+      <form action="/users/login" method="POST">
         <label for="input-email">Email</label>
-        <input type="email" id="input-email" name="email" placeholder="Your email" />
-      </div>
 
-      <div class="form-group">
-        <label for="input-password">Password</label>
-        <input type="password" name="password" class="form-control" id="input-password" placeholder="********" />
-      </div>
+        <div class="form-group">
+          <input type="email" id="input-email" name="email" placeholder="Your email" />
+        </div>
 
-      <button type="submit" class="btn btn-primary">Login</button>
+        <div class="form-group">
+          <label for="input-password">Password</label>
+          <input type="password" name="password" class="form-control" id="input-password" placeholder="********" />
+        </div>
 
-      {{#if errorMessage}}
-        <p class="error">{{errorMessage}}</p>
-      {{/if}}
-    </form>
+        <button type="submit" class="btn btn-primary">Login</button>
+
+        {{#if errorMessage}}
+          <p class="error">{{errorMessage}}</p>
+        {{/if}}
+      </form>
+    </div>
   </div>
+
 </div>
