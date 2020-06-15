@@ -85,18 +85,12 @@
         </div>
     </div>
 
-
-
-
-
-
-
-<h2>Post a comment</h2>
-<form action="/puppies/comments/create" method="POST">
-    <input type="text" id="content" name="content" placeholder="Your comment" >
-    <button type="submit">Post comment</button>
-    <input type="text" hidden value="{{puppy.id}}" name="id">
-</form>
+    <h2>Post a comment</h2>
+    <form action="/puppies/comments/create" method="POST">
+        <input type="text" id="content" name="content" placeholder="Your comment" >
+        <button type="submit">Post comment</button>
+        <input type="text" hidden value="{{puppy.id}}" name="id">
+    </form>
 
 </div>
 

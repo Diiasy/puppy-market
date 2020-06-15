@@ -3,14 +3,14 @@ const app = express();
 const User = require("../../models/User.js");
 const bcryptjs = require('bcryptjs');
 const saltRounds = 10;
-var multer  = require('multer');
-var upload = multer({ dest: './public/uploads/profile-pictures' });
+const uploadCloudUsers = require('../../config/cloudinary.js');
 const mongoose = require('mongoose');
 
 
-app.post('/', upload.single("picture"),(req, res, next) => {
+app.post('/', uploadCloudUsers.single("picture"),(req, res, next) => {
   const { username, email, name, password, city } = req.body;
-  const profileImage = req.file.filename;
+  const profileImage = req.file.originalname;
+  const profileImagePath = req.file.path;
 
   if (!username || !email || !password || !city ||!name) {
       res.render('users/signup', { errorMessage: 'All fields are mandatory. Please provide your username, email and password.' });
@@ -36,7 +36,8 @@ app.post('/', upload.single("picture"),(req, res, next) => {
       city,
       name,
       passwordHash: hashedPassword,
-      profileImage
+      profileImage,
+      profileImagePath
     });
   })
   .then(userFromDB => {
