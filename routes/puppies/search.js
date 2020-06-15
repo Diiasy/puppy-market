@@ -3,7 +3,6 @@ const app = express();
 const Puppy = require("../../models/Puppy");
 
 app.get('/', (req, res) => {
-    debugger;
     let searchTerm = String(req.query.search);
     Puppy.find(
         { $text: { $search: searchTerm}}

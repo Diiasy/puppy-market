@@ -1,0 +1,9 @@
+.welcome-text {
+    text-decoration: none;
+    color: white;
+}
+
+.welcome-text:hover {
+    text-decoration: underline;
+    color: white;
+}

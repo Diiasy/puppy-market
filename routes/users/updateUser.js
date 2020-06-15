@@ -8,14 +8,14 @@ var upload = multer({ dest: './public/uploads/profile-pictures' });
 const mongoose = require('mongoose');
 
 app.get('/', (req, res) => {
-    let userId = req.query.id;
-    User.findById(userId)
-    .then((user) => {
-      res.render("users/updateUser", {user});
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  let userId = req.query.id;
+  User.findById(userId)
+  .then((user) => {
+    res.render("users/updateUser", {user});
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 });
 
 app.post('/', upload.single("picture"),(req, res, next) => {
@@ -23,17 +23,17 @@ app.post('/', upload.single("picture"),(req, res, next) => {
     const {name, city } = req.body;
     let profileImage = req.body.profileImage;
     if (req.file){
-        profileImage = req.file.filename;
+      profileImage = req.file.filename;
     }
     if (!city || !name) {
-        res.render('users/updateUser', { errorMessage: 'All fields are mandatory. Please provide your username, email, name, city and password.' });
-        return;
+      res.render('users/updateUser', { errorMessage: 'All fields are mandatory. Please provide your username, email, name, city and password.' });
+      return;
     }
     User.findByIdAndUpdate(userId,{
-        city,
-        name,
-        profileImage
-      })
+      city,
+      name,
+      profileImage
+    })
     .then(userFromDB => {
       console.log('Updated user is: ', userFromDB);
       res.redirect(`/users/profile?id=${userId}`);
@@ -44,7 +44,7 @@ app.post('/', upload.single("picture"),(req, res, next) => {
       } else {
         next(error);
       }
-    })
+    });
 });
   
 

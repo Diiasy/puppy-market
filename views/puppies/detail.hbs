@@ -22,7 +22,7 @@
             </ul>
             <p>Price: {{ puppy.price }}€</p>
             <p>Description: {{ puppy.description }}</p>
-            <p>Owner: <a href="/users/profile?id={{puppy.owner._id}}" id="ref-link">{{ puppy.owner.username }}</a></p>
+            <p>Owner: <a href="/users/profile?id={{puppy.owner._id}}" class="ref-link">{{ puppy.owner.username }}</a></p>
         </div>
         <div class="col-sm-8 col-md-6 col-lg-4">
             <img class="main-pic" src="{{ puppy.mainPicturePath }}" alt="">
@@ -32,19 +32,22 @@
             {{/if}}
         </div>
     </div>
-    <div class="row justify-content-center my-3">
-        <h4>Additional Pictures</h4>
-    </div>
-
-    <div class="row">
-    {{#each puppy.picturesPath}}
-        <div class="col-sm-8 col-md-6 col-lg-4 p-2 d-flex justify-content-center">
-            <div class="card" style="width: 22rem">
-                <img src="{{ this }}" alt="" class="card-img-top" >
-            </div>
+    {{#if morePictures}}
+        <div class="row justify-content-center my-3">
+            <h4>Additional Pictures</h4>
         </div>
-    {{/each}}
-    </div>
+
+        <div class="row">
+        {{#each puppy.picturesPath}}
+            <div class="col-sm-8 col-md-6 col-lg-4 p-2 d-flex justify-content-center">
+                <div class="card" style="width: 22rem">
+                    <img src="{{ this }}" alt="" class="card-img-top" >
+                </div>
+            </div>
+        {{/each}}
+        </div>
+    {{/if}}
+
 
     <div class="row justify-content-center my-3">
         <h4>Comments</h4>

@@ -13,8 +13,8 @@ app.post('/', upload.single("picture"),(req, res, next) => {
   const profileImage = req.file.filename;
 
   if (!username || !email || !password || !city ||!name) {
-      res.render('users/signup', { errorMessage: 'All fields are mandatory. Please provide your username, email and password.' });
-      return;
+    res.render('users/signup', { errorMessage: 'All fields are mandatory. Please provide your username, email and password.' });
+    return;
   }
 
     // make sure passwords are strong:
