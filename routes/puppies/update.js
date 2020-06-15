@@ -38,6 +38,7 @@ app.post("/", uploadCloudPuppies.array("pictures"), (req, res)=>{
         mainPicturePath = req.files[0].path;
     }
 
+
     Puppy.findByIdAndUpdate(puppyId, {
         name: req.body.name,
         mainPicture,
@@ -46,7 +47,8 @@ app.post("/", uploadCloudPuppies.array("pictures"), (req, res)=>{
         breed: req.body.breed,
         birthDate: req.body.birthDate,
         colors: req.body.colors,
-        price: req.body.price
+        price: req.body.price,
+        description: req.body.description
         // pictures: req.body.pictures
     })
     .then((puppy)=>{

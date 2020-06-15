@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 hbs.registerPartials(path.join(__dirname, 'views/partials'));
 
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use(session({
@@ -53,9 +53,8 @@ const puppiesCreateRouter = require('./routes/puppies/create');
 const puppiesDetailRouter = require('./routes/puppies/detail');
 const puppiesDeleteRouter = require('./routes/puppies/delete');
 const puppiesUpdateRouter = require('./routes/puppies/update');
-const puppiesCommentRouter = require('./routes/puppies/comment');
-
-
+const puppiesCommentsCreateRouter = require('./routes/puppies/comments/create');
+const puppiesCommentsUpdateRouter = require('./routes/puppies/comments/update');
 
 // Protect Middleware
 function protectMiddleWare(req,res,next){
@@ -115,7 +114,9 @@ app.use('/puppies/create',protectMiddleWare, isSeller, puppiesCreateRouter);
 app.use('/puppies/detail',protectMiddleWare, puppiesDetailRouter);
 app.use('/puppies/delete', puppiesDeleteRouter);
 app.use('/puppies/update', puppiesUpdateRouter);
-app.use('/puppies/comment', puppiesCommentRouter);
+app.use('/puppies/comments/create', puppiesCommentsCreateRouter);
+app.use('/', puppiesCommentsUpdateRouter);
+
 
 
 app.listen(process.env.port, ()=> {
