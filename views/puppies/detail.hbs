@@ -53,14 +53,15 @@
     </div>
 
     <div class="row">
-        <div class="col-sm-8 col-md-6 col-lg-6 p-2 d-flex justify-content-center"> 
-            {{#each puppy.comments}}
+        {{#each puppy.comments}}
+            <div class="col-10 p-2"> 
+
                 <div class="update-comments">
                     <div class="comments">
                         <p class="comments-content">{{this.content}}</p>
-                        <p>{{this.author.username}}</p>
-                        <a class="update-comments-btn" href="/puppies/comments/update">Update commments</a>
-                        <a href="/puppies/comments/delete/{{this._id}}">Delete commments</a>
+                        <p class="author">{{this.author.username}}</p>
+                        <a class="update-comments-btn btn btn-secondary button" href="/puppies/comments/update">Update comments</a>
+                        <a class="btn btn-secondary button" href="/puppies/comments/delete/{{this._id}}">Delete comments</a>
                     </div>
                 
                     <form style="display: none;" class="update-comments-form">
@@ -69,14 +70,19 @@
                         <button class="confirm-update-comments-btn" type="submit">Edit comment</button>            
                     </form>
                 </div>
-            {{/each}}
+            </div>
+        {{/each}}
             <input class="puppy-id"  type="text" hidden value="{{puppy.id}}" name="puppyId">
         </div>
     </div>
 
+    <div class="row justify-content-center my-3">
+        <h4>Add your comment</h4>
+    </div>
+
     <div class="row d-flex justify-content-center my-3">
         <div class="col-sm-8 col-md-6">           
-            <form action="/puppies/comment" method="POST">
+            <form action="/puppies/comments/create" method="POST">
                 <div class="form-group">
                     <input type="text" class="form-control" id="content" name="content" placeholder="Your comment" >
                     <input type="text" hidden value="{{puppy.id}}" name="id">
@@ -86,14 +92,6 @@
             </form>
         </div>
     </div>
-
-    <h2>Post a comment</h2>
-    <form action="/puppies/comments/create" method="POST">
-        <input type="text" id="content" name="content" placeholder="Your comment" >
-        <button type="submit">Post comment</button>
-        <input type="text" hidden value="{{puppy.id}}" name="id">
-    </form>
-
 </div>
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
