@@ -54,6 +54,8 @@ const puppiesDetailRouter = require('./routes/puppies/detail');
 const puppiesDeleteRouter = require('./routes/puppies/delete');
 const puppiesUpdateRouter = require('./routes/puppies/update');
 const puppiesCommentRouter = require('./routes/puppies/comment');
+const puppiesSearchRouter = require('./routes/puppies/search');
+
 
 
 
@@ -113,6 +115,7 @@ app.use('/users/updateUser', updateUserRouter);
 app.use('/puppies', puppiesRouter);
 app.use('/puppies/create',protectMiddleWare, isSeller, puppiesCreateRouter);
 app.use('/puppies/detail',protectMiddleWare, puppiesDetailRouter);
+app.use('/puppies/search',protectMiddleWare, puppiesSearchRouter);
 app.use('/puppies/delete', puppiesDeleteRouter);
 app.use('/puppies/update', puppiesUpdateRouter);
 app.use('/puppies/comment', puppiesCommentRouter);

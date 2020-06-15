@@ -17,7 +17,9 @@ const puppySchema = new mongoose.Schema ({
         author: { type: mongoose.Schema.ObjectId, ref: "User" },
         content: { type: String }
       }]
-})
+});
+puppySchema.index({'$**': 'text'});
+
 
 const Puppy = mongoose.model("Puppy", puppySchema);
 

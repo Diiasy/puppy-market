@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container my-2">
     <div class="row justify-content-center my-3">
         <div class="col-sm-8 col-md-6 col-lg-4">
             <h1>{{ puppy.name }}</h1>
@@ -22,13 +22,13 @@
             </ul>
             <p>Price: {{ puppy.price }}€</p>
             <p>Description: {{ puppy.description }}</p>
-            <p>Owner: <a href="/users/profile?id={{puppy.owner._id}}">{{ puppy.owner.username }}</a></p>
+            <p>Owner: <a href="/users/profile?id={{puppy.owner._id}}" id="ref-link">{{ puppy.owner.username }}</a></p>
         </div>
         <div class="col-sm-8 col-md-6 col-lg-4">
-            <img src="{{ puppy.mainPicturePath }}" alt="">
+            <img class="main-pic" src="{{ puppy.mainPicturePath }}" alt="">
             {{#if isOwner}}
-                <p><a href="/puppies/update/{{puppy._id}}">Update puppy</a></p>
-                <p><a href="/puppies/delete/{{puppy._id}}">Delete puppy</a></p>
+                <button href="/puppies/update/{{puppy._id}}" class="btn btn-secondary m-1">Update puppy</button>
+                <button href="/puppies/delete/{{puppy._id}}" class="btn btn-secondary m-1">Delete puppy</button>
             {{/if}}
         </div>
     </div>

@@ -18,8 +18,9 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
 
-img {
-    width: 300px;
+.main-pic {
+    max-width: 450px;
+    margin: 25px;
 }
 
 .puppy-title {
@@ -56,15 +57,35 @@ img {
     object-fit: cover;
 }
 
-footer {
-    width: 100%;
+.footer {
     margin-bottom: 0;
     position: absolute;
     bottom: 0;
+    width: 100%;
+    align-items: center;
 }
 
 footer p {
-    padding: 10px 10px 10px 10px;
-    color: rgba(0,0,0,.5) !important;
-
+    color: rgb(124, 124, 131);
 }
+
+.social-media-icon {
+    margin: 0px 20px;
+    color: rgb(124, 124, 131);
+}
+
+.spacer {
+    height: 120px;
+}
+
+button {
+    background-color: #c4dcc3  !important;
+    border:  #81a780 !important;
+    font-weight: 600 !important;
+    color: white !important;
+}
+
+#ref-link {
+    color: #81a780;
+}
+

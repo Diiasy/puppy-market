@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container my-2">
     <div class="row justify-content-center my-3">
         <div class="col-sm-8 col-md-6 col-lg-6">
             <h4>{{user.username}}</h4>
@@ -6,11 +6,11 @@
             <p>Email: {{user.email}}</p>
             <p>City: {{user.city}}</p>
             {{#if isOwner}}
-            <p><a href="/users/updateUser?id={{user._id}}">Update profile</a></p>
+            <button href="/users/updateUser?id={{user._id}}" class="btn btn-secondary m-1">Update puppy</button>
             {{/if}}
         </div>
         <div class="col-sm-8 col-md-6 col-lg-6">
-            <img src="/uploads/profile-pictures/{{user.profileImage}}" alt="{{user.username}} img">
+            <img class="main-pic" src="/uploads/profile-pictures/{{user.profileImage}}" alt="{{user.username}} img">
         </div>
     </div>
     <div class="row justify-content-center my-3">
