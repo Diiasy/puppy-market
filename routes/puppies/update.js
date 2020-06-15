@@ -46,7 +46,8 @@ app.post("/", uploadCloudPuppies.array("pictures"), (req, res)=>{
         breed: req.body.breed,
         birthDate: req.body.birthDate,
         colors: req.body.colors,
-        price: req.body.price
+        price: req.body.price,
+        description: req.body.description
         // pictures: req.body.pictures
     })
     .then((puppy)=>{

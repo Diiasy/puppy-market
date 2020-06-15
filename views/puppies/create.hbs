@@ -1,4 +1,4 @@
-<div class="container d-flex justify-content-center m-5">
+<div class="container d-flex justify-content-center my-3">
   <div class="col-sm-8 col-md-6">
         <form id="form form-create-puppy" action="/puppies/create" enctype="multipart/form-data" method="POST">
             <h2>Add your Pup</h2>
@@ -42,7 +42,7 @@
             <div class="color-div">
                 <label for="colors">Coat Colors</label>
 
-                <input class="color" type="text" placeholder="Color" name="colors">
+                <input class="color form-control" type="text" placeholder="Color" name="colors">
                 <button id="add-color-btn" class="btn">Add color</button>
                 <button id="delete-color-btn" class="btn">Delete color</button>
             </div>
@@ -52,8 +52,13 @@
             <label for="price">Price</label>
 
 
-            <input type="number" placeholder="Price" name="price" min="0">
-            <input type="text" placeholder="Description" name="description">
+            <input type="number" class="form-control" placeholder="Price" name="price" min="0">
+
+        </div>
+
+            <div class="form-group">
+            <label for="price">Description</label>
+            <input type="text" class="form-control" placeholder="Description" name="description">
 
         </div>
 
@@ -61,20 +66,21 @@
             <label for="mainPicture">Profile Picture</label>
         </div>
         <div class="form-group">
-            <input type="file" id="main-picture" name="pictures">
+            <input class="form-control" type="file" id="main-picture" name="pictures">
         </div>
+
         <div class="form-group">
-            <label for="OtherPictures">More Pictures</label>
+            <label for="otherPictures">More Pictures</label>
         </div>
         <div class="form-group">
             <div class="pictures-div">
-                <input multiple class="pictures" type="file" name="pictures">
+                <input multiple class="pictures" type="file" name="pictures" class="form-control">
                 <button id="add-picture-btn" class="btn">Add picture</button>
                 <button id="delete-picture-btn" class="btn">Delete picture</button>
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Add Pupp</button>
+        <button type="submit" class="btn btn-secondary">Add Puppy</button>
       
         </form>
 

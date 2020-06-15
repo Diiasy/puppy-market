@@ -1,34 +1,41 @@
 .navbar {
-    background-color: rgb(13, 27, 13);
-}
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px 0 20px;
+    font-family: 'Roboto Slab', serif;
+  }
 
 .nav {
-    padding: 5px;
     display: flex;
     flex-direction: row;
-    list-style-type: none;
+    list-style: none;
     justify-content: space-evenly;
+    padding: 0;
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.205);
+
+
+
 }
 
 .nav-list {
     display: flex;
     justify-content: flex-end;
+    
 }
 
-
-.nav-link {
-    color: white;
+a.nav-link {
+    display: block;
 }
 
 .nav-link:hover {
     text-decoration: none;
-    color: white;
     font-weight: 600;
 }
 
-.brand a {
-    color: white;
-}
 
 .brand img {
     width: 50px;
@@ -37,6 +44,14 @@
     margin-left: 25px;
     border:0;
     box-shadow: none;
-    margin-bottom: 0px
+    margin-bottom: 3px
+}
+
+.navbar-brand {
+    color: rgba(0,0,0,.5) !important;
+}
+
+.navbar-brand:hover {
+    font-weight: 600;
 }
 
