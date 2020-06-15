@@ -22,5 +22,12 @@ button {
     color: white !important;
 }
 
+.button {
+    background-color: #c4dcc3  !important;
+    border:  #81a780 !important;
+    font-weight: 600 !important;
+    color: white !important;
+}
+
 
 

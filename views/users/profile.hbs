@@ -1,4 +1,4 @@
-<div class="container my-2">
+<div class="container">
     <div class="row justify-content-center my-3">
         <div class="col-sm-8 col-md-6 col-lg-6">
             <h4>{{user.username}}</h4>
@@ -6,11 +6,11 @@
             <p>Email: {{user.email}}</p>
             <p>City: {{user.city}}</p>
             {{#if isOwner}}
-                <button href="/users/updateUser?id={{user._id}}" class="btn btn-secondary m-1">Update puppy</button>
+            <p><a href="/users/updateUser?id={{user._id}}" class="btn btn-secondary button">Update profile</a></p>
             {{/if}}
         </div>
         <div class="col-sm-8 col-md-6 col-lg-6">
-            <img class="main-pic" src="/uploads/profile-pictures/{{user.profileImage}}" alt="{{user.username}} img">
+            <img class="main-pic" src="{{user.profileImagePath}}" alt="{{user.username}} img">
         </div>
     </div>
     <div class="row justify-content-center my-3">
@@ -19,7 +19,7 @@
     <div class="row">
     {{#each puppies}}
         <div class="col-sm-8 col-md-6 col-lg-4 p-2 d-flex justify-content-center">
-            <div class="card">
+            <div class="card" style="width: 22rem">
                 <a class="puppy-title" href="/puppies/detail/{{this._id}}">
                 <h5 class="card-title p-2">{{this.name}}</h5>
                 <img src="{{ this.mainPicturePath }}" class="card-img-top" alt="...">
@@ -31,4 +31,3 @@
         <h4>Reviews</h4>
     </div>
 </div>
-

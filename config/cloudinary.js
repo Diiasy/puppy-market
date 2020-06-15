@@ -16,6 +16,16 @@ var storagePuppies = new CloudinaryStorage({
   }
 });
 
+var storageUsers = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params:{
+    folder: 'uploads/users', // The name of the folder in cloudinary
+    allowedFormats: ['jpg', 'png']
+  }
+});
+
 const uploadCloudPuppies = multer({ storage: storagePuppies });
+const uploadCloudUsers = multer({ storage: storageUsers });
 
 module.exports = uploadCloudPuppies;
+module.exports = uploadCloudUsers;

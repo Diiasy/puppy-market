@@ -31,6 +31,9 @@ const userSchema = new Schema(
       type: String,
       required: [true, 'Profile image is required.']
     },
+    profileImagePath: {
+      type: String
+    },
     city: {
         type: String,
         required: [true, 'City is required.']

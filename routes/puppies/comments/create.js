@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
-const Puppy = require("../../models/Puppy");
-const User = require("../../models/User");
+const Puppy = require("../../../models/Puppy");
+const User = require("../../../models/User");
 
 app.post('/',(req, res) => {
     const puppyId = req.body.id;
