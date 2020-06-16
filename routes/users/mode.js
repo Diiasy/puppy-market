@@ -13,6 +13,4 @@ app.get("/buyer", (req,res)=> {
     res.redirect("/");
 });
 
-
-
 module.exports = app;

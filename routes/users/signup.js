@@ -6,7 +6,6 @@ const saltRounds = 10;
 const uploadCloudUsers = require('../../config/cloudinary.js');
 const mongoose = require('mongoose');
 
-
 app.post('/', uploadCloudUsers.single("picture"),(req, res, next) => {
   const { username, email, name, password, city } = req.body;
   const profileImage = req.file.originalname;
@@ -17,7 +16,7 @@ app.post('/', uploadCloudUsers.single("picture"),(req, res, next) => {
     return;
   }
 
-    // make sure passwords are strong:
+  // make sure passwords are strong:
   const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
   if (!regex.test(password)) {
   res

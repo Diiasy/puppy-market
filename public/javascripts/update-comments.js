@@ -1,6 +1,5 @@
 let puppyId = document.querySelector(".puppy-id").value;
 let $comments = document.querySelectorAll(".update-comments");
-let $updateBtn = document.querySelectorAll(".update-comments-btn");
 
 for(let i =0; i< $comments.length; i++){
     $comments[i].addEventListener("submit", (event)=> {
@@ -11,9 +10,10 @@ for(let i =0; i< $comments.length; i++){
         let url = `/puppies/${puppyId}/comments/${commentId}`
         axios.patch(url, newContent)
             .then(response=>{
-                console.log(response);
                 let $commentContent = event.target.closest(".update-comments").querySelector(".comments-content");
                 $commentContent.innerHTML = newContent.content;
+                let $updatedComment = event.target.closest(".update-comments").querySelector(".comments");
+                $updatedComment.style.display = "block";
                 event.target.style.display = "none";
             })
             .catch(err=>{
@@ -22,26 +22,14 @@ for(let i =0; i< $comments.length; i++){
     })
 }
 
-
-// for(let i =0; i< $comments.length; i++){
-//     $comments[i].addEventListener("submit", (event)=> {
-//         $updateBtn[i].addEventListener("click", e=>{
-//             event.preventDefault();
-//             let $comments = event.currentTarget.querySelector(".comments");
-//             let $updateForm = event.currentTarget.querySelector(".update-comments-form");
-//             let commentId = event.currentTarget.querySelector(".comments-id").value;
-//             let url = `/puppies/${puppyId}/comments/${commentId}`
-//             axios.get(url)
-//                 .then(response=>{
-//                     console.log(response);
-//                     $comments.style.display = "none";
-//                     $updateForm.style.display = "block";
-    
-//                 })
-//                 .catch(err=>{
-//                     console.log(err);
-//                 })
-//         })
-        
-//     })
-// }
+let $updateBtns = document.querySelectorAll(".update-comments-btn");
+for(let i =0; i< $updateBtns.length; i++){
+    $updateBtns[i].addEventListener("click", (e)=> {
+        e.preventDefault();
+        let $updateComments = e.currentTarget.closest(".update-comments");
+        let $comments =  $updateComments.querySelector(".comments");
+        let $updateForm =  $updateComments.querySelector(".update-comments-form");
+        $updateForm.style.display = "block";
+        $comments.style.display = "none";
+    })
+}   

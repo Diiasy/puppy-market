@@ -1,5 +1,5 @@
 <div class="container-fluid">
-        <div class="row d-flex justify-content-end">
+    <div class="row d-flex justify-content-end">
         <form class="form-inline mt-3 mr-4" action="/puppies/search">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search"><i class="fas fa-search"></i></button>
@@ -10,17 +10,17 @@
 <div class="container center-box my-5">
     <div class="row">
         {{#each puppy}}
-        <div class="col-md-10 col-lg-4 p-2 d-flex justify-content-center">
-            <a class="puppy-title" href="/puppies/detail/{{this._id}}">
-                <div class="card">
-                    <h5 class="card-title p-2">{{this.name}}</h5>
-                    <img src="{{ this.mainPicturePath }}" class="card-img-top" alt="..."/>
-                    <div class="card-body">
-                        <p class="card-text">{{this.description}}</p>
+            <div class="col-md-10 col-lg-4 p-2 d-flex justify-content-center">
+                <a class="puppy-title" href="/puppies/detail/{{this._id}}">
+                    <div class="card">
+                        <h5 class="card-title p-2">{{this.name}}</h5>
+                        <img src="{{ this.mainPicturePath }}" class="card-img-top" alt="..."/>
+                        <div class="card-body">
+                            <p class="card-text">{{this.description}}</p>
+                        </div>
                     </div>
-                </div>
-            </a>
-        </div>
+                </a>
+            </div>
         {{/each}}
     </div>
 </div>
