@@ -2,7 +2,7 @@
   <div class="col-sm-8 col-md-6 col-lg-4">
     <div id="form">
       <h2>Update your details</h2>
-      <form action="/users/updateUser" method="POST" enctype="multipart/form-data">
+      <form action="/users/updateUser" method="POST"  enctype="multipart/form-data">
 
         <div class="form-group">
           <label for="input-name">Your Name</label>
@@ -18,9 +18,7 @@
           <label for="input-picture">Profile Picture</label>
           <img class="main-pic" src="{{ user.profileImagePath }}" alt="">
           <button id="delete-main-picture-btn" class="btn btn-secondary button m-1">Delete main picture</button>
-          <input value="{{user.profileImagePath}}" type="hidden" name="profileImagePath">
           <input value="{{user.profileImage}}" type="hidden" name="profileImage">
-
         </div>
 
         <div class="row m-2">
