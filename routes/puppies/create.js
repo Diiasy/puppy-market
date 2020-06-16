@@ -8,10 +8,9 @@ app.get('/', (req, res)=>{
 })
 
 app.post('/', uploadCloudPuppies.array("pictures"), (req, res)=>{    
-
     const { name, gender, breed, birthDate, colors, price, description } = req.body;
     const owner = req.session.user._id;
-
+    
     let mainPicture = "";
     let mainPicturePath = "";
     if (req.files){

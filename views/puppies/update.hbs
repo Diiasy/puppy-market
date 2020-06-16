@@ -5,67 +5,58 @@
         <h2>Update puppy</h2>
 
             <div class="form-group">
-            <label for="input-username">Name of Puppy</label>
-            <input type="text" class="form-control" value="{{puppy.name}}" placeholder="Name" name="name">
+                <label for="input-username">Name of Puppy</label>
+                <input type="text" class="form-control" value="{{puppy.name}}" placeholder="Name" name="name">
             </div>
 
 
             <div class="form-group">
-
-            <label for="gender">Gender</label>
-            <select id="gender" class="form-control" value="{{puppy.gender}}" name="gender">
-                {{#if puppy.male}}
-                    <option selected value="Male">Male</option>
-                {{else}}
-                    <option value="Male">Male</option>
-                {{/if}}
-                {{#if puppy.female}}
-                    <option selected value="Female">Female</option>
-                {{else}}
-                    <option value="Female">Female</option>
-                {{/if}}
-            </select>
-
+                <label for="gender">Gender</label>
+                <select id="gender" class="form-control" value="{{puppy.gender}}" name="gender">
+                    {{#if puppy.male}}
+                        <option selected value="Male">Male</option>
+                    {{else}}
+                        <option value="Male">Male</option>
+                    {{/if}}
+                    {{#if puppy.female}}
+                        <option selected value="Female">Female</option>
+                    {{else}}
+                        <option value="Female">Female</option>
+                    {{/if}}
+                </select>
             </div>
 
             <div class="form-group">
                 <div class="breed-div">
                     <label for="breed">Breed</label>
                     {{#each puppy.breed }}
-                    <input class="breed form-control" value="{{this}}" type="text" placeholder="Breed" name="breed">
+                        <input class="breed form-control" value="{{this}}" type="text" placeholder="Breed" name="breed">
                     {{/each}}
-                    <button id="add-breed-btn" class="btn">Add breed</button>
-                    <button id="delete-breed-btn" class="btn">Delete breed</button>
+                    <button id="add-breed-btn" class="btn btn-secondary button m-1">Add breed</button>
+                    <button id="delete-breed-btn" class="btn btn-secondary button m-1">Delete breed</button>
                 </div>
             </div>
 
-
             <div class="form-group">
                 <label for="birthDate">Date of Birth</label>
-
                 <input class="form-control" type="date" value="{{puppy.birthDate}}" placeholder="Birth Date" name="birthDate">
-
             </div>
 
         <div class="form-group">
-
             <div class="color-div">
                 <label for="colors">Coat Colors</label>
-
                 {{#each puppy.colors }}
                     <input class="color form-control" value="{{this}}" type="text" placeholder="Color" name="colors">
                 {{/each}}                
-                <button id="add-color-btn" class="btn">Add color</button>
-                <button id="delete-color-btn" class="btn">Delete color</button>
+                <button id="add-color-btn" class="btn btn-secondary button m-1">Add color</button>
+                <button id="delete-color-btn" class="btn btn-secondary button m-1">Delete color</button>
             </div>
         </div>
-
 
         <div class="form-group">
             <label for="price">Price</label>
             <input type="number" class="form-control" value="{{puppy.price}}" placeholder="Price" name="price" min="0">
         </div>
-
 
         <div class="form-group">
             <label for="price">Description</label>
@@ -75,35 +66,22 @@
         <div class="form-group">
             <label for="mainPicture">Profile Picture</label>
         </div>
+
         <div class="form-group">
             <img class="main-pic" class="form-control" src="{{ puppy.mainPicturePath }}" alt="">
-            <button id="delete-main-picture-btn" class="btn">Delete main picture</button>
+            <button id="delete-main-picture-btn" class="btn btn-secondary button m-1">Delete main picture</button>
             <input type="text" hidden value="{{puppy.mainPicture}}" name="mainPicture">
             <input type="text" hidden value="{{puppy.mainPicturePath}}" name="mainPicturePath">        
         </div>
 
-        {{!-- <div class="form-group">
-            <label for="OtherPictures">More Pictures</label>
-        </div> --}}
-
-
-
-            {{!-- <div class="pictures-div">
-                <input multiple class="pictures " type="file" name="pictures">
-                <button id="add-picture-btn" class="btn">Add picture</button>
-                <button id="delete-picture-btn" class="btn">Delete picture</button>
-            </div> --}}
-
         <input type="text" hidden value="{{puppy.id}}" name="id">
-
 
         <button type="submit" class="btn btn-secondary">Update Puppy</button>
 
-            
     </form>
 
     {{#if errorMessage}}
-      <p class="error">{{errorMessage}}</p>
+        <p class="error">{{errorMessage}}</p>
     {{/if}}
     </div>
 </div>

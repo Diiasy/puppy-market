@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const Puppy = require("../../../models/Puppy");
 
-
 app.get("/puppies/:puppyId/comments/delete/:commentId", (req, res) => {
     let commentId = req.params.commentId;
     let puppyId = req.params.puppyId;

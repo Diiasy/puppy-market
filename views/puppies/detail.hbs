@@ -4,6 +4,7 @@
             <h1>{{ puppy.name }}</h1>
         </div>
     </div>
+
     <div class="row justify-content-center my-3">
         <div class="col-sm-8 col-md-6 col-lg-4">
             <p>Breeds:</p>
@@ -37,13 +38,13 @@
         </div>
 
         <div class="row">
-        {{#each puppy.picturesPath}}
-            <div class="col-sm-8 col-md-6 col-lg-4 p-2 d-flex justify-content-center">
-                <div class="card" style="width: 22rem">
-                    <img src="{{ this }}" alt="" class="card-img-top" >
+            {{#each puppy.picturesPath}}
+                <div class="col-sm-8 col-md-6 col-lg-4 p-2 d-flex justify-content-center">
+                    <div class="card" style="width: 22rem">
+                        <img src="{{ this }}" alt="" class="card-img-top" >
+                    </div>
                 </div>
-            </div>
-        {{/each}}
+            {{/each}}
         </div>
     {{/if}}
 
@@ -53,14 +54,15 @@
     </div>
 
     <div class="row">
-        <div class="col-sm-8 col-md-6 col-lg-6 p-2 d-flex justify-content-center"> 
-            {{#each puppy.comments}}
+        {{#each puppy.comments}}
+            <div class="col-10 p-2"> 
+
                 <div class="update-comments">
                     <div class="comments">
                         <p class="comments-content">{{this.content}}</p>
-                        <p>{{this.author.username}}</p>
-                        <button class="update-comments-btn" type="submit">Update comments</button>
-                        <a href="/puppies/{{../puppy._id}}/comments/delete/{{this._id}}">Delete commments</a>
+                        <p class="author">{{this.author.username}}</p>
+                        <button class="update-comments-btn btn btn-secondary button" class="update-comments-btn" type="submit">Update comments</button>
+                        <a class="btn btn-secondary button" href="/puppies/{{../puppy._id}}/comments/delete/{{this._id}}">Delete commments</a>
                     </div>
                 
                     <form class="update-comments-form" style="display: none;">
@@ -69,27 +71,27 @@
                         <button class="confirm-update-comments-btn" type="submit">Edit comment</button>            
                     </form>
                 </div>
-            {{/each}}
+            </div>
+        {{/each}}
             <input class="puppy-id"  type="text" hidden value="{{puppy.id}}" name="puppyId">
         </div>
     </div>
 
+    <div class="row justify-content-center my-3">
+        <h4>Add your comment</h4>
+    </div>
 
-    <h2>Post a comment</h2>
     <div class="row d-flex justify-content-center my-3">
         <div class="col-sm-8 col-md-6">           
             <form action="/puppies/comments/create" method="POST">
                 <div class="form-group">
                     <input type="text" class="form-control" id="content" name="content" placeholder="Your comment" >
-                    
                 </div>
-
                 <button type="submit" class="btn btn-secondary">Comment</button>
                 <input type="text" hidden value="{{puppy.id}}" name="id">
             </form>
         </div>
     </div>
-
 </div>
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

@@ -6,7 +6,7 @@
             <p>Email: {{user.email}}</p>
             <p>City: {{user.city}}</p>
             {{#if isOwner}}
-            <p><a href="/users/updateUser?id={{user._id}}" class="btn btn-secondary button">Update profile</a></p>
+                <p><a href="/users/updateUser?id={{user._id}}" class="btn btn-secondary button">Update profile</a></p>
             {{/if}}
         </div>
         <div class="col-sm-8 col-md-6 col-lg-6">
@@ -17,15 +17,15 @@
         <h4>Puppies by owner</h4>
     </div>
     <div class="row">
-    {{#each puppies}}
-        <div class="col-sm-8 col-md-6 col-lg-4 p-2 d-flex justify-content-center">
-            <div class="card" style="width: 22rem">
-                <a class="puppy-title" href="/puppies/detail/{{this._id}}">
-                <h5 class="card-title p-2">{{this.name}}</h5>
-                <img src="{{ this.mainPicturePath }}" class="card-img-top" alt="...">
+        {{#each puppies}}
+            <div class="col-sm-8 col-md-6 col-lg-4 p-2 d-flex justify-content-center">
+                <div class="card" style="width: 22rem">
+                    <a class="puppy-title" href="/puppies/detail/{{this._id}}">
+                    <h5 class="card-title p-2">{{this.name}}</h5>
+                    <img src="{{ this.mainPicturePath }}" class="card-img-top" alt="...">
+                </div>
             </div>
-        </div>
-    {{/each}}
+        {{/each}}
     </div>
     <div class="row justify-content-center my-3">
         <h4>Reviews</h4>
