@@ -15,7 +15,7 @@ app.post('/',(req, res) => {
     })
     .catch((err) => {
       console.log("Err",err);
-    })
+    });
   });
 
 module.exports = app;

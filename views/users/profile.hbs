@@ -23,6 +23,7 @@
                 <a class="puppy-title" href="/puppies/detail/{{this._id}}">
                 <h5 class="card-title p-2">{{this.name}}</h5>
                 <img src="{{ this.mainPicturePath }}" class="card-img-top" alt="...">
+                </a>
             </div>
         </div>
     {{/each}}
@@ -30,4 +31,37 @@
     <div class="row justify-content-center my-3">
         <h4>Reviews</h4>
     </div>
+    <div class="row">
+        {{#each reviews}}
+            <div class="col-10 p-2"> 
+                <p class="comment">{{this.review}}</p>
+                <p>Reviewer: <span class="author">{{this.reviewer.username}} </span><span class="score">Score: {{this.score}}</span></p>
+            </div>
+        {{/each}}
+    </div>
+    <form action="/reviews/createReview?profile_id={{user._id}}" method="post">
+
+        <div class="row m-2">
+            <label for="">Review:</label>
+        </div>
+        <div class="row m-2">
+            <textarea type="text" class="form-control" name="review" required></textarea>
+        </div>
+
+        <div class="row m-2">
+            <label for="">Score:</label>
+            <input type="number" name="score" class="form-control" min="1" max="10"required>
+        </div>
+
+        <div class="row m-2">
+            <input type="submit" value="Submit"></input>
+        </div>
+    </form>
+
+    {{#if errorMessage}}
+        <p class="error">{{errorMessage}}</p>
+    {{/if}}
+
 </div>
+
+

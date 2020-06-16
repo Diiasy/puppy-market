@@ -47,6 +47,8 @@ const profileRouter = require('./routes/users/profile');
 const updateUserRouter = require('./routes/users/updateUser');
 const logoutRouter = require('./routes/users/logout');
 const modeRouter = require('./routes/users/mode');
+const reviewRouter = require('./routes/reviews/createReview');
+
 
 const puppiesRouter = require('./routes/puppies/list');
 const puppiesCreateRouter = require('./routes/puppies/create');
@@ -109,6 +111,8 @@ app.use('/users/login', loginRouter);
 app.use('/users/profile',protectMiddleWare, profileRouter);
 app.use('/users/logout', protectMiddleWare, logoutRouter);
 app.use('/users/mode', protectMiddleWare, modeRouter);
+app.use('/reviews/createReview', protectMiddleWare, reviewRouter);
+
 
 app.use('/users/updateUser', updateUserRouter);
 app.use('/puppies', puppiesRouter);

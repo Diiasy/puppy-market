@@ -37,7 +37,7 @@ const userSchema = new Schema(
     city: {
         type: String,
         required: [true, 'City is required.']
-      }
+    }
   },
   {
     timestamps: true

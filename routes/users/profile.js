@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const User = require("../../models/User.js");
 const Puppy = require("../../models/Puppy.js");
+const Review = require("../../models/Review.js");
 const bcryptjs = require('bcryptjs');
 const saltRounds = 10;
 var multer  = require('multer');
@@ -17,9 +18,14 @@ app.get("/", (req, res) => {
   }
   User.findById(userId)
     .then((user) => {
-      Puppy.find({owner: user._id})
+      Puppy.find({owner: userId})
       .then((puppies) => {
-        res.render("users/profile", {user, puppies, isOwner});
+        Review.find({reviewed: userId})
+        .populate("reviewer")
+        .populate("reviewed")
+        .then((reviews)=> {
+          res.render("users/profile", {user, puppies, isOwner, reviews});
+        })
       })
     })
   .catch((err) => {
