@@ -11,4 +11,4 @@ $deleteMainPictureBtn.addEventListener("click", e => {
   $mainPictureDiv.insertBefore($newMainPicture, $deleteMainPictureBtn);
   $mainPictureDiv.removeChild($mainPictureToRemove);
   $mainPictureDiv.removeChild($deleteMainPictureBtn);
-})
+});

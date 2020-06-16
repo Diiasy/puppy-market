@@ -11,6 +11,8 @@ app.get("/", (req, res) => {
   if (req.session.user._id === userId){
     isOwner = true;
   }
+  let visitor =  !isOwner;
+  
   User.findById(userId)
     .then((user) => {
       Puppy.find({owner: userId})
@@ -19,7 +21,7 @@ app.get("/", (req, res) => {
         .populate("reviewer")
         .populate("reviewed")
         .then((reviews)=> {
-          res.render("users/profile", {user, puppies, isOwner, reviews});
+          res.render("users/profile", {user, puppies, isOwner, reviews, visitor});
         });
       });
     })
