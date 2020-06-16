@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const mongoose = require('mongoose');
 
 const hbs = require('hbs');
 app.set('view engine', 'hbs');
@@ -22,10 +24,10 @@ app.use(cookieParser());
 app.use(session({
     secret: process.env.secret,
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
 
-const mongoose = require('mongoose');
 
 mongoose
     .connect(process.env.db, {
@@ -55,6 +57,7 @@ const puppiesDeleteRouter = require('./routes/puppies/delete');
 const puppiesUpdateRouter = require('./routes/puppies/update');
 const puppiesCommentsCreateRouter = require('./routes/puppies/comments/create');
 const puppiesCommentsUpdateRouter = require('./routes/puppies/comments/update');
+const puppiesCommentsDeleteRouter = require('./routes/puppies/comments/delete');
 const puppiesSearchRouter = require('./routes/puppies/search');
 
 
@@ -119,8 +122,7 @@ app.use('/puppies/delete', puppiesDeleteRouter);
 app.use('/puppies/update', puppiesUpdateRouter);
 app.use('/puppies/comments/create', puppiesCommentsCreateRouter);
 app.use('/', puppiesCommentsUpdateRouter);
-
-
+app.use('/', puppiesCommentsDeleteRouter);
 
 app.listen(process.env.port, ()=> {
     console.log("Webserver is listening", process.env.port);

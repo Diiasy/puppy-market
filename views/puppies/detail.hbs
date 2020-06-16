@@ -59,11 +59,11 @@
                     <div class="comments">
                         <p class="comments-content">{{this.content}}</p>
                         <p>{{this.author.username}}</p>
-                        <a class="update-comments-btn" href="/puppies/comments/update">Update commments</a>
-                        <a href="/puppies/comments/delete/{{this._id}}">Delete commments</a>
+                        <button class="update-comments-btn" type="submit">Update comments</button>
+                        <a href="/puppies/{{../puppy._id}}/comments/delete/{{this._id}}">Delete commments</a>
                     </div>
                 
-                    <form style="display: none;" class="update-comments-form">
+                    <form class="update-comments-form" style="display: none;">
                         <input class="update-comments-content" type="text" value="{{this.content}}" name="content" placeholder="Your comment" >
                         <input class="comments-id" type="text" hidden value="{{this._id}}" name="id">
                         <button class="confirm-update-comments-btn" type="submit">Edit comment</button>            
@@ -74,25 +74,21 @@
         </div>
     </div>
 
+
+    <h2>Post a comment</h2>
     <div class="row d-flex justify-content-center my-3">
         <div class="col-sm-8 col-md-6">           
-            <form action="/puppies/comment" method="POST">
+            <form action="/puppies/comments/create" method="POST">
                 <div class="form-group">
                     <input type="text" class="form-control" id="content" name="content" placeholder="Your comment" >
-                    <input type="text" hidden value="{{puppy.id}}" name="id">
+                    
                 </div>
 
                 <button type="submit" class="btn btn-secondary">Comment</button>
+                <input type="text" hidden value="{{puppy.id}}" name="id">
             </form>
         </div>
     </div>
-
-    <h2>Post a comment</h2>
-    <form action="/puppies/comments/create" method="POST">
-        <input type="text" id="content" name="content" placeholder="Your comment" >
-        <button type="submit">Post comment</button>
-        <input type="text" hidden value="{{puppy.id}}" name="id">
-    </form>
 
 </div>
 

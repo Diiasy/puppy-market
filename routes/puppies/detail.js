@@ -8,11 +8,11 @@ app.get("/:id", (req, res)=>{
         .populate("owner")
         .populate("comments.author")
         .then(puppy=>{
-            let userId = req.session.user._id;
             let morePictures = false;
             if (puppy.pictures.length > 0){
                 morePictures = true;
             }
+            let userId = req.session.user._id;
             Puppy.find({owner: userId})
                 .then(puppyOwner=>{
                     let isOwner = false;
@@ -23,7 +23,6 @@ app.get("/:id", (req, res)=>{
                     })
                     res.render("puppies/detail", {puppy, isOwner, morePictures});
                 })
-            
         })
         .catch((err)=> {
             console.log(err);
