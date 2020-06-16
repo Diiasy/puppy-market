@@ -11,17 +11,22 @@ app.get("/", (req, res) => {
   if (req.session.user._id === userId){
     isOwner = true;
   }
+  
   let visitor =  !isOwner;
   
   User.findById(userId)
     .then((user) => {
       Puppy.find({owner: userId})
       .then((puppies) => {
+        let isSeller = false;
+        if (puppies.length > 0){
+            isSeller= true;
+        }
         Review.find({reviewed: userId})
         .populate("reviewer")
         .populate("reviewed")
         .then((reviews)=> {
-          res.render("users/profile", {user, puppies, isOwner, reviews, visitor});
+          res.render("users/profile", {user, puppies, isOwner, reviews, visitor, isSeller});
         });
       });
     })

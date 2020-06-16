@@ -13,6 +13,7 @@
             <img class="main-pic" src="{{user.profileImagePath}}" alt="{{user.username}} img">
         </div>
     </div>
+    {{#if isSeller}}
     <div class="row justify-content-center my-3">
         <h4>Puppies by owner</h4>
     </div>
@@ -28,6 +29,7 @@
         </div>
         {{/each}}
     </div>
+    {{/if}}
     <div class="row justify-content-center my-3">
         <h4>Reviews</h4>
     </div>
