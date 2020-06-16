@@ -35,26 +35,30 @@
         {{#each reviews}}
             <div class="col-10 p-2"> 
                 <p class="comment">{{this.review}}</p>
-                <p>Reviewer: <span class="author">{{this.reviewer.username}} </span><span class="score">Score: {{this.score}}</span></p>
+                <p>Reviewer: <span><a href="/users/profile?id={{puppy.reviewer._id}}" class="ref-link">{{this.reviewer.username}} </a></span><span class="score">Score: {{this.score}}</span></p>
             </div>
         {{/each}}
     </div>
     <form action="/reviews/createReview?profile_id={{user._id}}" method="post">
 
-        <div class="row m-2">
-            <label for="">Review:</label>
-        </div>
-        <div class="row m-2">
-            <textarea type="text" class="form-control" name="review" required></textarea>
+        <div class="row">
+            <div class="col-10 p-2"> 
+                <label for="">Review:</label>
+                <textarea type="text" class="form-control" name="review" required></textarea>
+            </div>
+        </div> 
+
+        <div class="row">
+            <div class="col-10 p-2"> 
+                <label for="">Score:</label>
+                <input type="number" name="score" class="form-control" min="1" max="10"required>
+            </div>
         </div>
 
-        <div class="row m-2">
-            <label for="">Score:</label>
-            <input type="number" name="score" class="form-control" min="1" max="10"required>
-        </div>
-
-        <div class="row m-2">
-            <input type="submit" value="Submit"></input>
+        <div class="row">
+            <div class="col-10 p-2">
+                <input type="submit" value="Submit" class="button p-2"></input>
+            </div>
         </div>
     </form>
 
