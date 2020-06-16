@@ -39,28 +39,33 @@
             </div>
         {{/each}}
     </div>
+    {{#if visitor}}
     <form action="/reviews/createReview?profile_id={{user._id}}" method="post">
 
-        <div class="row">
+        <div class="row justify-content-center my-3">
             <div class="col-10 p-2"> 
                 <label for="">Review:</label>
                 <textarea type="text" class="form-control" name="review" required></textarea>
             </div>
         </div> 
 
-        <div class="row">
-            <div class="col-10 p-2"> 
+        <div class="row justify-content-center my-3">
+            <div class="col-10 p-2 range-wrap">
+             
                 <label for="">Score:</label>
-                <input type="number" name="score" class="form-control" min="1" max="10"required>
+                <input type="range" name="score" class="form-control-range range" min="1" max="10"required>
+                <output class="bubble"></output>
+
             </div>
         </div>
 
-        <div class="row">
+        <div class="row justify-content-center my-4">
             <div class="col-10 p-2">
                 <input type="submit" value="Submit" class="button p-2"></input>
             </div>
         </div>
     </form>
+    {{/if}}
 
     {{#if errorMessage}}
         <p class="error">{{errorMessage}}</p>
@@ -69,3 +74,4 @@
 </div>
 
 
+<script src="/javascripts/bubble.js"></script>
