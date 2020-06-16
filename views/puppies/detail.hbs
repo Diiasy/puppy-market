@@ -55,20 +55,22 @@
     </div>
 
     <div class="row">
-        {{#each puppy.comments}}
+        {{#each comments}}
             <div class="col-10 p-2"> 
 
                 <div class="update-comments">
                     <div class="comments">
                         <p class="comments-content">{{this.content}}</p>
                         <p class="author">{{this.author.username}}</p>
-                        <button class="update-comments-btn btn btn-secondary button" class="update-comments-btn" type="submit">Update comments</button>
-                        <a class="btn btn-secondary button" href="/puppies/{{../puppy._id}}/comments/delete/{{this._id}}">Delete commments</a>
+                        {{#if this.isAuthor}}
+                            <button class="update-comments-btn btn btn-secondary button" class="update-comments-btn" type="submit">Update comments</button>
+                            <a class="btn btn-secondary button" href="/puppies/{{../puppy._id}}/comments/delete/{{this._id}}">Delete commments</a>
+                        {{/if}}
                     </div>
                 
                     <form class="update-comments-form" style="display: none;">
                         <input class="update-comments-content" type="text" value="{{this.content}}" name="content" placeholder="Your comment" >
-                        <input class="comments-id" type="text" hidden value="{{this._id}}" name="id">
+                        <input class="comments-id" type="text" hidden value="{{this.id}}" name="id">
                         <button class="confirm-update-comments-btn" type="submit">Edit comment</button>            
                     </form>
                 </div>
