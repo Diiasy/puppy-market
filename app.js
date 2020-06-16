@@ -128,6 +128,6 @@ app.use('/puppies/comments/create', puppiesCommentsCreateRouter);
 app.use('/', puppiesCommentsUpdateRouter);
 app.use('/', puppiesCommentsDeleteRouter);
 
-app.listen(process.env.port, ()=> {
-    console.log("Webserver is listening", process.env.port);
+app.listen(process.env.PORT, ()=> {
+    console.log("Webserver is listening", process.env.PORT);
 });
