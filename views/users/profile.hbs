@@ -17,7 +17,6 @@
         <h4>Puppies by owner</h4>
     </div>
     <div class="row">
-<<<<<<< HEAD
     {{#each puppies}}
         <div class="col-sm-8 col-md-6 col-lg-4 p-2 d-flex justify-content-center">
             <div class="card" style="width: 22rem">
@@ -25,16 +24,8 @@
                 <h5 class="card-title p-2">{{this.name}}</h5>
                 <img src="{{ this.mainPicturePath }}" class="card-img-top" alt="...">
                 </a>
-=======
-        {{#each puppies}}
-            <div class="col-sm-8 col-md-6 col-lg-4 p-2 d-flex justify-content-center">
-                <div class="card" style="width: 22rem">
-                    <a class="puppy-title" href="/puppies/detail/{{this._id}}">
-                    <h5 class="card-title p-2">{{this.name}}</h5>
-                    <img src="{{ this.mainPicturePath }}" class="card-img-top" alt="...">
-                </div>
->>>>>>> 1a3cb06ed2f273d46f2957560aae88563a5a1719
             </div>
+        </div>
         {{/each}}
     </div>
     <div class="row justify-content-center my-3">
