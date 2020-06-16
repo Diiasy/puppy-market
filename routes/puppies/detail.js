@@ -12,17 +12,23 @@ app.get("/:id", (req, res)=>{
         if (puppy.pictures.length > 0){
             morePictures = true;
         }
+
         let userId = req.session.user._id;
-        Puppy.find({owner: userId})
-        .then(puppyOwner=>{
-            let isOwner = false;
-            puppyOwner.forEach(el=>{
-                if (el.id === puppyId){
-                    isOwner = true;
-                }
+        let isOwner = false;
+        if (puppy.owner.id === userId){
+            isOwner = true;
+        }
+        
+        let comments = puppy.comments.map(comment=>{
+            return({
+                id: comment.id,
+                author: comment.author,
+                content: comment.content,
+                isAuthor: comment.author.id === userId
             })
-            res.render("puppies/detail", {puppy, isOwner, morePictures});
         })
+
+        res.render("puppies/detail", {puppy, isOwner, comments, morePictures});
     })
     .catch((err)=> {
         console.log(err);
