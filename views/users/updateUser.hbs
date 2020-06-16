@@ -18,7 +18,9 @@
           <label for="input-picture">Profile Picture</label>
           <img class="main-pic" src="{{ user.profileImagePath }}" alt="">
           <button id="delete-main-picture-btn" class="btn btn-secondary button m-1">Delete main picture</button>
+          <input value="{{user.profileImagePath}}" type="hidden" name="profileImagePath">
           <input value="{{user.profileImage}}" type="hidden" name="profileImage">
+
         </div>
 
         <div class="row m-2">
@@ -35,20 +37,4 @@
   </div>
 </div>
 
-<script>
-  let $mainPictureDiv = document.querySelector(".main-picture-div");
-  let $deleteMainPictureBtn = document.querySelector("#delete-main-picture-btn");
-  let $mainPictureToRemove = $mainPictureDiv.querySelector(".main-picture");
-  $deleteMainPictureBtn.addEventListener("click", e => {
-    e.preventDefault();
-    
-    let $newMainPicture = document.createElement("input");
-    $newMainPicture.setAttribute("type", "file");
-    $newMainPicture.setAttribute("id", "profileImage");
-    $newMainPicture.setAttribute("name", "picture");
-    $mainPictureDiv.insertBefore($newMainPicture, $deleteMainPictureBtn);
-    $mainPictureDiv.removeChild($mainPictureToRemove);
-    $mainPictureDiv.removeChild($deleteMainPictureBtn);
-    
-})
-</script>
+<script src="/javascripts/profile-picture.jss"></script>
